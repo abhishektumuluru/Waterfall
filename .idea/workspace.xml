@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f31a718-18e1-4cde-8876-ea30851c1ee4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cs2340DockingAboat.iws" />
@@ -2186,7 +2185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487113027508</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updating project">
+      <created>1487114702534</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1487114702534</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2232,7 +2238,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initialize project" />
     <MESSAGE value="adding firebase dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding firebase dependencies" />
+    <MESSAGE value="updating project" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
