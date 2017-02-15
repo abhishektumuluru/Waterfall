@@ -46,6 +46,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<Void> task) {
                             // user is now signed out
                             Log.d("AUTH", "Logged out");
+                            Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                            startActivity(intent);
                             finish();
                         }
                     });
@@ -59,9 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-
-                finish();
-                return;
+                Log.d("AUTH", auth.getCurrentUser().getEmail());
             }
         }
     }
