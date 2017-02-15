@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WaterFall</string>
+    <string name="facebook_application_id" translatable="false">265690317192888</string>
 </resources>

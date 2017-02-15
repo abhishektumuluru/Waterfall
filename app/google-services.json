@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "523337410005",
+    "firebase_url": "https://cs2340-1a9f8.firebaseio.com",
+    "project_id": "cs2340-1a9f8",
+    "storage_bucket": "cs2340-1a9f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523337410005:android:adfaf152ea6cfb8a",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.waterfall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523337410005-oa4dalu12gmhh2o9r36uup8b3ca576t3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.waterfall",
+            "certificate_hash": "0AC59BBA42806B0DC44FA08DD46716415A6BC82E"
+          }
+        },
+        {
+          "client_id": "523337410005-dc5dq9aktdj4m0d6iaaphinv1vbvrkp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi2BOveuGkIobDxrfNOr53j74yHxudloM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523337410005-dc5dq9aktdj4m0d6iaaphinv1vbvrkp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
