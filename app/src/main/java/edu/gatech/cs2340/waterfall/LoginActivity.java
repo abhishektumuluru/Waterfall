@@ -1,17 +1,22 @@
 package edu.gatech.cs2340.waterfall;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.ResultCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth auth;
     private static final int RC_SIGN_IN = 0;
     @Override
@@ -20,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-
+            Log.d("LOGGED", auth.getCurrentUser().getEmail());
         } else {
             startActivityForResult(AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -29,6 +34,21 @@ public class LoginActivity extends AppCompatActivity {
                                     new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build()))
                             .build(),
                     RC_SIGN_IN);
+        }
+        findViewById(R.id.logout_btn).setOnClickListener(this);
+    }
+
+    public void onClick(View v) {
+        if (v.getId() == R.id.logout_btn) {
+            AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        public void onComplete(@NonNull Task<Void> task) {
+                            // user is now signed out
+                            Log.d("AUTH", "Logged out");
+                            finish();
+                        }
+                    });
         }
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
