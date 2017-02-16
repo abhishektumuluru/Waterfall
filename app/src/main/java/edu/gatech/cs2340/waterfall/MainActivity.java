@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout) {
-            FirebaseAuth auth = LoginActivity.getAuth();
+            FirebaseAuth auth = WelcomeActivity.getAuth();
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
