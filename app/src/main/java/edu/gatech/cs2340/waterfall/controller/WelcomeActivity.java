@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.waterfall;
+package edu.gatech.cs2340.waterfall.controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
+
+import edu.gatech.cs2340.waterfall.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 
