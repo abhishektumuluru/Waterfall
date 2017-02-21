@@ -89,7 +89,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         if (userData == null) {
                             //mUserDatabase.child(uniqueId).child("email").setValue(email);
                             //mUserDatabase.child(uniqueId).child("name").setValue(displayName);
-                            intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                            intent = new Intent(WelcomeActivity.this, CreateProfile.class);
                         } else {
                             //mUserDatabase.setValue(uniqueId);
                             //mUserDatabase.child("email").setValue(email);

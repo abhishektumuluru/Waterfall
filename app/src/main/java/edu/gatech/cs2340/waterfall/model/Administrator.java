@@ -67,7 +67,7 @@ public class Administrator {
     }
 
     //write to database
-    public void writeToDatabase(String uid, String email, String name, int zipcode, String phoneNumber) {
+    public void writeToDatabase() {
         DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
         mUserDatabase.child(uid).child("email").setValue(email);
         mUserDatabase.child(uid).child("name").setValue(name);
