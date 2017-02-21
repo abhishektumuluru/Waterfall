@@ -10,6 +10,11 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 
@@ -19,6 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private static FirebaseAuth auth;
     private static final int RC_SIGN_IN = 0;
+    private DatabaseReference mDatabase;
 
     /**
      *
@@ -36,6 +42,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void openLoginScreen(View view) {
         auth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         if (auth.getCurrentUser() != null) {
             Log.d("LOGGED", auth.getCurrentUser().getEmail());
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
@@ -60,7 +67,29 @@ public class WelcomeActivity extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
+                String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference UserRef = mDatabase.child(uniqueId);
+                UserRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Object userData = dataSnapshot.getValue();
+                        Intent intent;
+                        if (userData == null) {
+                            intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                        } else {
+                            intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                        }
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 Log.d("AUTH", auth.getCurrentUser().getEmail());
+
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
