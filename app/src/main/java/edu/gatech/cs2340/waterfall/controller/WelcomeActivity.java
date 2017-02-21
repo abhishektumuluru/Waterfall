@@ -24,7 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private static FirebaseAuth auth;
     private static final int RC_SIGN_IN = 0;
-    private DatabaseReference mDatabase;
+    private static DatabaseReference mUserDatabase;
+    private static DatabaseReference mReportDatabase;
 
     /**
      *
@@ -32,6 +33,14 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     public static FirebaseAuth getAuth() {
         return auth;
+    }
+
+    public static DatabaseReference getmUserDatabase() {
+        return mUserDatabase;
+    }
+
+    public static DatabaseReference getmReportDatabase() {
+        return mReportDatabase;
     }
 
     @Override
@@ -42,7 +51,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void openLoginScreen(View view) {
         auth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("users");
+        mReportDatabase = FirebaseDatabase.getInstance().getReference("Reports");
         if (auth.getCurrentUser() != null) {
             Log.d("LOGGED", auth.getCurrentUser().getEmail());
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
@@ -67,16 +77,22 @@ public class WelcomeActivity extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-                String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                DatabaseReference UserRef = mDatabase.child(uniqueId);
+                final String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                final String displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                DatabaseReference UserRef = mUserDatabase.child(uniqueId);
                 UserRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Object userData = dataSnapshot.getValue();
                         Intent intent;
                         if (userData == null) {
+                            //mUserDatabase.child(uniqueId).child("email").setValue(email);
+                            //mUserDatabase.child(uniqueId).child("name").setValue(displayName);
                             intent = new Intent(WelcomeActivity.this, MainActivity.class);
                         } else {
+                            //mUserDatabase.setValue(uniqueId);
+                            //mUserDatabase.child("email").setValue(email);
                             intent = new Intent(WelcomeActivity.this, MainActivity.class);
                         }
                         startActivity(intent);
