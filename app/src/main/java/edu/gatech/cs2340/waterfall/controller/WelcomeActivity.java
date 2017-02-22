@@ -14,11 +14,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 
 import edu.gatech.cs2340.waterfall.R;
+import edu.gatech.cs2340.waterfall.model.Administrator;
+import edu.gatech.cs2340.waterfall.model.Manager;
+import edu.gatech.cs2340.waterfall.model.Model;
+import edu.gatech.cs2340.waterfall.model.User;
+import edu.gatech.cs2340.waterfall.model.Worker;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -56,6 +62,7 @@ public class WelcomeActivity extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
             Log.d("LOGGED", auth.getCurrentUser().getEmail());
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+            setUser();
             startActivity(intent);
             finish();
         } else {
@@ -69,6 +76,25 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     }
 
+    public static void setUser() {
+        String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String name = mUserDatabase.child(uniqueId).child("name").orderByValue().toString();
+        int zip =  mUserDatabase.child(uniqueId).child("zipcode").orderByValue().hashCode();
+        String phone = mUserDatabase.child(uniqueId).child("phone number").orderByValue().toString();
+        String type = mUserDatabase.child(uniqueId).child("type").orderByValue().toString();
+
+        if (type.equals("user")) {
+            Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
+        } else if (type.equals("worker")) {
+            Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phone));
+        } else if (type.equals("manager")) {
+            Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phone));
+        } else if (type.equals("admin")) {
+            Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phone));
+        }
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // RC_SIGN_IN is the request code you passed into startActivityForResult(...) when starting the sign in flow.
@@ -77,9 +103,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-                final String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                final String displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                //final String displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 DatabaseReference UserRef = mUserDatabase.child(uniqueId);
                 UserRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -93,6 +119,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         } else {
                             //mUserDatabase.setValue(uniqueId);
                             //mUserDatabase.child("email").setValue(email);
+                            setUser();
                             intent = new Intent(WelcomeActivity.this, MainActivity.class);
                         }
                         startActivity(intent);

@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.waterfall.R;
+import edu.gatech.cs2340.waterfall.model.Model;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        String name = Model.getInstance().getCurrentUser().getName();
+        String type = Model.getInstance().getCurrentUser().getType();
+        Log.d(type, name);
     }
 
     @Override
@@ -96,12 +100,14 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
-
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_editprof) {
+            Intent intent = new Intent(this, CreateProfile.class);
+            intent.putExtra("isEdit", true);
+            startActivity(intent);
         } else if (id == R.id.nav_logout) {
             FirebaseAuth auth = WelcomeActivity.getAuth();
             AuthUI.getInstance()

@@ -55,18 +55,26 @@ public class CreateProfile extends AppCompatActivity {
         int index = modes.indexOf((String) modeSelection.getSelectedItem());
         int zipcode = Integer.parseInt(zip.getText().toString());
         String phoneNumber = phone.getText().toString();
+        if (getIntent().hasExtra("isEdit")) {
+            User oldUser = Model.getInstance().getCurrentUser();
+            oldUser.deleteFromDatabase();
+        }
         if (index == 0) {
             User newUser = new User(uid, email, name, zipcode, phoneNumber);
             newUser.writeToDatabase();
+            Model.getInstance().setCurrentUser(newUser);
         } else if (index == 1) {
             Worker newUser = new Worker(uid, email, name, zipcode, phoneNumber);
             newUser.writeToDatabase();
+            Model.getInstance().setCurrentUser(newUser);
         } else if (index == 2) {
             Manager newUser = new Manager(uid, email, name, zipcode, phoneNumber);
             newUser.writeToDatabase();
+            Model.getInstance().setCurrentUser(newUser);
         } else if (index == 3) {
             Administrator newUser = new Administrator(uid, email, name, zipcode, phoneNumber);
             newUser.writeToDatabase();
+            Model.getInstance().setCurrentUser(newUser);
         }
 
     }

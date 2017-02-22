@@ -81,6 +81,12 @@ public class User {
 
     }
 
+    //delete from database
+    public void deleteFromDatabase() {
+        DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
+        mUserDatabase.child(uid).removeValue();
+    }
+
     //action methods
     public void submitReport() {
         //TODO
