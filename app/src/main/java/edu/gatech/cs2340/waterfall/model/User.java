@@ -14,6 +14,7 @@ import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
  * Created by vivekraja07 on 2/21/17.
  */
 public class User implements Parcelable {
+    //Getters and setters for user class
     public String getName() {
         return name;
     }
@@ -29,10 +30,6 @@ public class User implements Parcelable {
     public String getEmail() {
         return email;
     }
-
-//    public String getType() {
-//        return type;
-//    }
 
     public int getZipcode() {
         return zipcode;
@@ -58,7 +55,7 @@ public class User implements Parcelable {
     //private String type = "user";
     private int zipcode;
     private String phoneNumber;
-
+    //Constructor
     public User(String uid, String name, String email, int zipcode, String phoneNumber) {
         this.name = name;
         this.uid = uid;
@@ -66,7 +63,7 @@ public class User implements Parcelable {
         this.zipcode = zipcode;
         this.phoneNumber = phoneNumber;
     }
-    //constructor
+    //Parcelable constructor
     public User(Parcel parcel) {
         this.name = parcel.readString();
         this.uid = parcel.readString();
@@ -98,7 +95,11 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
-    //write to database
+
+    /**
+     * @param type The type of the user
+     * Write the user's details to the database
+     */
     public void writeToDatabase(String type) {
         DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
         mUserDatabase.child(uid).child("name").setValue(name);
@@ -109,21 +110,25 @@ public class User implements Parcelable {
 
     }
 
-    //delete from database
+    /**
+     * Delete the user from the database
+     */
     public void deleteFromDatabase() {
         DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
         mUserDatabase.child(uid).removeValue();
     }
 
-    //action methods
+    /**
+     * Allow the user to submit a water report
+     */
     public void submitReport() {
         //TODO
     }
 
+    /**
+     * View water sources in your area
+     */
     public void viewSources() {
         //TODO
     }
-
-    //getters & setters
-
 }

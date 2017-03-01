@@ -58,13 +58,16 @@ public class MainActivity extends AppCompatActivity
         Model model = Model.getInstance();
         if (model.getInstance().getCurrentUser() != null) {
             String name = Model.getInstance().getCurrentUser().getName();
-//            String type = Model.getInstance().getCurrentUser().getType();
+//          String type = Model.getInstance().getCurrentUser().getType();
         } else {
             Log.d("IT's NULL", NULL);
         }
 
     }
 
+    /**
+     * Close the navigation drawer when back is pressed
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -75,9 +78,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Inflate the menu; this adds items to the action bar if it is present.
+
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -99,6 +105,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
+    //Navigation drawer options
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -117,6 +124,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, CreateProfile.class);
             intent.putExtra("isEdit", true);
             startActivity(intent);
+            //log out and return to the welcome activity when sign out is clicked
         } else if (id == R.id.nav_logout) {
             FirebaseAuth auth = WelcomeActivity.getAuth();
             AuthUI.getInstance()

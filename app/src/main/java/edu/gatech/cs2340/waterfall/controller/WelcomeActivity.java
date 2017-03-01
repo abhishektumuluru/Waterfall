@@ -33,10 +33,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private static DatabaseReference mUserDatabase;
     private static DatabaseReference mReportDatabase;
 
-    /**
-     *
-     * @return Firebase Auth
-     */
     public static FirebaseAuth getAuth() {
         return auth;
     }
@@ -55,6 +51,12 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
     }
 
+    /**
+     * @param view the current view
+     * Open a login screen for the user
+     *  If the user is already signed, then open the main activity
+     *  Otherwise, open the firebase login
+     */
     public void openLoginScreen(View view) {
         auth = FirebaseAuth.getInstance();
         mUserDatabase = FirebaseDatabase.getInstance().getReference("users");
@@ -66,6 +68,7 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
+            //open firebase login if current user is null i.e. not signed in
             startActivityForResult(AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
@@ -76,6 +79,9 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Retrieve the user details from firebase and set the local current user in the model
+     */
     public static void setUser() {
         Log.d("LOGGED", "SET USER CALLED");
         String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -85,7 +91,7 @@ public class WelcomeActivity extends AppCompatActivity {
         int zip =  mUserDatabase.child(uniqueId).child("zipcode").orderByValue().hashCode();
         String phone = mUserDatabase.child(uniqueId).child("phone number").orderByValue().toString();
         String type = mUserDatabase.child(uniqueId).child("type").orderByValue().toString();
-
+        //make a user locally in the model
         if (type.equals("user")) {
             Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
         } else if (type.equals("worker")) {
@@ -97,9 +103,14 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * @param requestCode The request code
+     * @param resultCode The result code
+     * @param data The intent which determines the response
+     *
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // RC_SIGN_IN is the request code you passed into startActivityForResult(...) when starting the sign in flow.
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
