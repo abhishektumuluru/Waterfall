@@ -30,9 +30,9 @@ public class User implements Parcelable {
         return email;
     }
 
-    public String getType() {
-        return type;
-    }
+//    public String getType() {
+//        return type;
+//    }
 
     public int getZipcode() {
         return zipcode;
@@ -55,11 +55,11 @@ public class User implements Parcelable {
     private String name;
     private String uid;
     private String email;
-    private final String type = "user";
+    //private String type = "user";
     private int zipcode;
     private String phoneNumber;
 
-    public User(String name, String uid, String email, int zipcode, String phoneNumber) {
+    public User(String uid, String name, String email, int zipcode, String phoneNumber) {
         this.name = name;
         this.uid = uid;
         this.email = email;
@@ -99,10 +99,10 @@ public class User implements Parcelable {
         }
     };
     //write to database
-    public void writeToDatabase() {
+    public void writeToDatabase(String type) {
         DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
-        //mUserDatabase.child(uid).child("email").setValue(email);
         mUserDatabase.child(uid).child("name").setValue(name);
+        mUserDatabase.child(uid).child("email").setValue(email);
         mUserDatabase.child(uid).child("zipcode").setValue(zipcode);
         mUserDatabase.child(uid).child("phone number").setValue(phoneNumber);
         mUserDatabase.child(uid).child("type").setValue(type);

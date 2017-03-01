@@ -7,14 +7,14 @@ import android.os.Parcel;
  */
 public class Worker extends User {
 
-    public String getType() {
-        return type;
-    }
+//    public String getType() {
+//        return type;
+//    }
 
-    private final String type = "worker";
+    //private String type = "worker";
 
-    public Worker(String uid, String email, String name, int zipcode, String phoneNumber) {
-        super(uid, email, name, zipcode, phoneNumber);
+    public Worker(String uid, String name, String email, int zipcode, String phoneNumber) {
+        super(uid, name, email, zipcode, phoneNumber);
     }
     //constructor
     public Worker(Parcel parcel) {

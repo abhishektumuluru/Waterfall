@@ -5,19 +5,19 @@ package edu.gatech.cs2340.waterfall.model;
  */
 public class Manager extends Worker {
 
-    public String getType() {
-        return type;
-    }
-
-    private final String type = "manager";
+//    public String getType() {
+//        return type;
+//    }
+//
+//    private String type = "manager";
 
     //constructor
-    public Manager(String uid, String email, String name, int zipcode, String phoneNumber) {
-        super(uid, email, name, zipcode, phoneNumber);
+    public Manager(String uid, String name, String email, int zipcode, String phoneNumber) {
+        super(uid, name, email, zipcode, phoneNumber);
     }
 
-    public Manager(String uid, String email, String name) {
-        this(uid, email, name, 0, null);
+    public Manager(String uid, String name, String email) {
+        this(uid, name, email, 0, null);
     }
 
     //action Methods

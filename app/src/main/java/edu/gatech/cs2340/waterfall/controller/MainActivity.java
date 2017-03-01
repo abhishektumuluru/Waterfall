@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         Model model = Model.getInstance();
         if (model.getInstance().getCurrentUser() != null) {
             String name = Model.getInstance().getCurrentUser().getName();
-            String type = Model.getInstance().getCurrentUser().getType();
+//            String type = Model.getInstance().getCurrentUser().getType();
         } else {
             Log.d("IT's NULL", NULL);
         }

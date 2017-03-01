@@ -11,9 +11,12 @@ import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
  */
 public class Administrator extends User{
 
-    public Administrator(String uid, String email, String name, int zipcode, String phoneNumber) {
-        super(uid, email, name, zipcode, phoneNumber);
+    public Administrator(String uid, String name, String email, int zipcode, String phoneNumber) {
+        super(uid, name, email, zipcode, phoneNumber);
     }
+
+//    private String type = "admin";
+
     public Administrator(Parcel parcel) {
         super(parcel);
     }
