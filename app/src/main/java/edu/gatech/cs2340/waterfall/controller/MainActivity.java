@@ -20,9 +20,13 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import edu.gatech.cs2340.waterfall.R;
 import edu.gatech.cs2340.waterfall.model.Model;
+
+import static android.R.attr.mode;
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -51,9 +55,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        String name = Model.getInstance().getCurrentUser().getName();
-        String type = Model.getInstance().getCurrentUser().getType();
-        Log.d(type, name);
+        Model model = Model.getInstance();
+        if (model.getInstance().getCurrentUser() != null) {
+            String name = Model.getInstance().getCurrentUser().getName();
+            String type = Model.getInstance().getCurrentUser().getType();
+        } else {
+            Log.d("IT's NULL", NULL);
+        }
+
     }
 
     @Override

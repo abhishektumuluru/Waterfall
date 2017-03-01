@@ -77,8 +77,10 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public static void setUser() {
+        Log.d("LOGGED", "SET USER CALLED");
         String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Log.d("EMAIL FROM FIREBASE", email);
         String name = mUserDatabase.child(uniqueId).child("name").orderByValue().toString();
         int zip =  mUserDatabase.child(uniqueId).child("zipcode").orderByValue().hashCode();
         String phone = mUserDatabase.child(uniqueId).child("phone number").orderByValue().toString();

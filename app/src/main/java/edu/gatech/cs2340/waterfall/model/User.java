@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.waterfall.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.ContactsContract;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -11,7 +13,7 @@ import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 /**
  * Created by vivekraja07 on 2/21/17.
  */
-public class User {
+public class User implements Parcelable {
     public String getName() {
         return name;
     }
@@ -57,23 +59,49 @@ public class User {
     private int zipcode;
     private String phoneNumber;
 
-    //constructor
-    public User(String uid, String email, String name, int zipcode, String phoneNumber) {
+    public User(String name, String uid, String email, int zipcode, String phoneNumber) {
         this.name = name;
         this.uid = uid;
         this.email = email;
         this.zipcode = zipcode;
         this.phoneNumber = phoneNumber;
     }
+    //constructor
+    public User(Parcel parcel) {
+        this.name = parcel.readString();
+        this.uid = parcel.readString();
+        this.email = parcel.readString();
+        this.zipcode = parcel.readInt();
+        this.phoneNumber = parcel.readString();
 
-    public User(String uid, String email, String name) {
-        this(uid, email, name, 0, null);
     }
 
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel parcel, int flag) {
+        parcel.writeString(this.name);
+        parcel.writeString(this.uid);
+        parcel.writeString(this.email);
+        parcel.writeInt(this.zipcode);
+        parcel.writeString(this.phoneNumber);
+    }
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     //write to database
     public void writeToDatabase() {
         DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
-        mUserDatabase.child(uid).child("email").setValue(email);
+        //mUserDatabase.child(uid).child("email").setValue(email);
         mUserDatabase.child(uid).child("name").setValue(name);
         mUserDatabase.child(uid).child("zipcode").setValue(zipcode);
         mUserDatabase.child(uid).child("phone number").setValue(phoneNumber);

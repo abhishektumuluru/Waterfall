@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import edu.gatech.cs2340.waterfall.model.*;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
@@ -17,7 +18,6 @@ import java.util.List;
 import edu.gatech.cs2340.waterfall.R;
 
 public class CreateProfile extends AppCompatActivity {
-    FirebaseAuth auth = WelcomeActivity.getAuth();
 
     private List<String> modes;
     private Spinner modeSelection;
@@ -29,14 +29,18 @@ public class CreateProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseAuth auth = WelcomeActivity.getAuth();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
         modes = Arrays.asList("User", "Worker", "Manager", "Administrator");
         modeSelection = (Spinner) findViewById(R.id.modeSelection);
+
         name = auth.getCurrentUser().getDisplayName();
         email = auth.getCurrentUser().getEmail();
         uid = auth.getCurrentUser().getUid();
+
 
         EditText nameText = (EditText) findViewById(R.id.name_text);
         zip = (EditText) findViewById(R.id.zipcode_text);
@@ -44,7 +48,7 @@ public class CreateProfile extends AppCompatActivity {
 
         nameText.setText(name);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, modes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, modes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSelection.setAdapter(adapter);
 

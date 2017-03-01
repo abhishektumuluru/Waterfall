@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.waterfall.model;
 
+import android.os.Parcel;
+
 import com.google.firebase.database.DatabaseReference;
 
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
@@ -9,17 +11,13 @@ import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
  */
 public class Administrator extends User{
 
-
-
-    //constructor
     public Administrator(String uid, String email, String name, int zipcode, String phoneNumber) {
         super(uid, email, name, zipcode, phoneNumber);
     }
-
-    public Administrator(String uid, String email, String name) {
-        this(uid, email, name, 0, null);
+    public Administrator(Parcel parcel) {
+        super(parcel);
     }
-
+    //constructor
 
     //action methods
     public void deleteAccount() {
