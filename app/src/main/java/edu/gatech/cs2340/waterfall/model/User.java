@@ -10,9 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
-/**
- * Created by vivekraja07 on 2/21/17.
- */
+
 public class User implements Parcelable {
     //Getters and setters for user class
     public String getName() {

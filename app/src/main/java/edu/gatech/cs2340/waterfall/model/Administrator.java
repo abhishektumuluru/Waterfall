@@ -6,9 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
-/**
- * Created by vivekraja07 on 2/21/17.
- */
+
 //The Administrator class
 public class Administrator extends User{
     //Constructor
