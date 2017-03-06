@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by seanrsain on 3/5/17.
  */
 
-public abstract class Report implements Parcelable {
+public abstract class Report implements Parcelable{
 
     // getter and setter
     public Location getLocation() {
@@ -37,11 +37,11 @@ public abstract class Report implements Parcelable {
         this.userName = userName;
     }
 
-    public int getReportNo() {
+    public String getReportNo() {
         return reportNo;
     }
 
-    public void setReportNo(int reportNo) {
+    public void setReportNo(String reportNo) {
         this.reportNo = reportNo;
     }
 
@@ -53,26 +53,45 @@ public abstract class Report implements Parcelable {
         this.date = date;
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
     //instance variables
     private Location location;
     private User user;
+    private String uid;
     private String userName;
-    private int reportNo;
-    Date date;
+    private String reportNo;
+    private static Integer reportCounts;
+    private Date date;
 
 
     public Report(User user, Location location){
+        this.date = new Date();
+        reportCounts++;
         this.user = user;
         this.location = location;
+        this.userName = user.getName();
+        this.uid = user.getUid();
+        this.reportNo = uid + reportCounts.toString();
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+    public abstract void writeToDatabase();
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
 
-    }
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }
