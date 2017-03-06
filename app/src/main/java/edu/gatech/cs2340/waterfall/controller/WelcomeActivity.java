@@ -36,6 +36,13 @@ public class WelcomeActivity extends AppCompatActivity {
     private static DatabaseReference mUserDatabase;
     private static DatabaseReference mReportDatabase;
 
+    private static String type;
+    private static String name;
+    private static String phoneNumber;
+    private static int zip;
+    private static String uniqueId;
+    private static String email;
+
     public static FirebaseAuth getAuth() {
         return auth;
     }
@@ -69,10 +76,11 @@ public class WelcomeActivity extends AppCompatActivity {
         mReportDatabase = FirebaseDatabase.getInstance().getReference("Reports");
         if (auth.getCurrentUser() != null) {
             Log.d("LOGGED", auth.getCurrentUser().getEmail());
-            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-            setUser();
-            startActivity(intent);
-            finish();
+            String uid = auth.getCurrentUser().getUid();
+            DatabaseReference ref = mUserDatabase.child(uid);
+            setUser(ref);
+//            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+//            startActivity(intent);
         } else {
             //open firebase login if current user is null i.e. not signed in
             startActivityForResult(AuthUI.getInstance()
@@ -88,26 +96,101 @@ public class WelcomeActivity extends AppCompatActivity {
     /**
      * Retrieve the user details from firebase and set the local current user in the model
      */
-    public static void setUser() {
-        Log.d("LOGGED", "SET USER CALLED");
-        String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        Log.d("EMAIL FROM FIREBASE", email);
-        String name = mUserDatabase.child(uniqueId).child("name").orderByValue().toString();
-        int zip =  mUserDatabase.child(uniqueId).child("zipcode").orderByValue().hashCode();
-        String phone = mUserDatabase.child(uniqueId).child("phone number").orderByValue().toString();
-        String type = mUserDatabase.child(uniqueId).child("type").orderByValue().toString();
-        //make a user locally in the model
-        if (type.equals("user")) {
-            Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
-        } else if (type.equals("worker")) {
-            Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phone));
-        } else if (type.equals("manager")) {
-            Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phone));
-        } else if (type.equals("admin")) {
-            Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phone));
-        }
+
+    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
+        listener.onStart();
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listener.onSuccess(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onFailure();
+            }
+        });
+
     }
+
+    public void setUser(DatabaseReference ref) {
+        readData(ref, new OnGetDataListener() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                type = dataSnapshot.child("type").getValue(String.class);
+                name = dataSnapshot.child("name").getValue(String.class);
+                zip = dataSnapshot.child("zipcode").getValue(int.class);
+                phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
+                Log.d("ONDATACHANGE", type + " " + name);
+                if (type.equals("user")) {
+                    Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phoneNumber));
+                } else if (type.equals("worker")) {
+                    Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phoneNumber));
+                } else if (type.equals("manager")) {
+                    Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phoneNumber));
+                } else if (type.equals("admin")) {
+                    Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phoneNumber));
+                }
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onStart() {
+                Log.d("ONSTART", "Started");
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+    }
+//    public static void setUser() {
+//        Log.d("LOGGED", "SET USER CALLED");
+//        final String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+//        Log.d("EMAIL FROM FIREBASE", email);
+//        DatabaseReference ref = mUserDatabase.child(uniqueId);
+//        //make a user locally in the model
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+////                type = dataSnapshot.child("type").getValue(String.class);
+////                name = dataSnapshot.child("name").getValue(String.class);
+////                zip = dataSnapshot.child("zipcode").getValue(int.class);
+////                phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
+////                Log.d("ONDATACHANGE", type + " " + name);
+////                if (type.equals("user")) {
+////                    Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phoneNumber));
+////                } else if (type.equals("worker")) {
+////                    Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phoneNumber));
+////                } else if (type.equals("manager")) {
+////                    Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phoneNumber));
+////                } else if (type.equals("admin")) {
+////                    Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phoneNumber));
+////                }
+////                Log.d("ONDATACHANGE", "Excuted");
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+////        if (type.equals("user")) {
+////            Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
+////        } else if (type.equals("worker")) {
+////            Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phone));
+////        } else if (type.equals("manager")) {
+////            Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phone));
+////        } else if (type.equals("admin")) {
+////            Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phone));
+////        }
+//    }
 
     /**
      * @param requestCode The request code
@@ -125,7 +208,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                 //final String displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-                DatabaseReference UserRef = mUserDatabase.child(uniqueId);
+                final DatabaseReference UserRef = mUserDatabase.child(uniqueId);
                 UserRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -138,10 +221,10 @@ public class WelcomeActivity extends AppCompatActivity {
                         } else {
                             //mUserDatabase.setValue(uniqueId);
                             //mUserDatabase.child("email").setValue(email);
-                            setUser();
-                            intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                            setUser(UserRef);
+                            //intent = new Intent(WelcomeActivity.this, MainActivity.class);
                         }
-                        startActivity(intent);
+                        //startActivity(intent);
                         finish();
                     }
 
