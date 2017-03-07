@@ -34,14 +34,19 @@ public class ReportsActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
                 ArrayList<String> reportList = new ArrayList<String>();
+                reportList.add("Condition  Type  Long  Lat  Date Time");
                 for (DataSnapshot report: dataSnapshot.getChildren()) {
                     String condition = report.child("condition").getValue(String.class);
                     String type = report.child("type").getValue(String.class);
+                    int date = report.child("dateAndTime").child("date").getValue(int.class);
+                    int month = report.child("dateAndTime").child("month").getValue(int.class);
+                    int hours = report.child("dateAndTime").child("hours").getValue(int.class);
+                    int minutes = report.child("dateAndTime").child("minutes").getValue(int.class);
                     Double lat = report.child("location").child("latitude").getValue(Double.class);
                     lat = (Math.round(lat * 100.0)) / 100.0;
                     Double longitude = report.child("location").child("longitude").getValue(Double.class);
                     longitude = (Math.round(longitude * 100.0)) / 100.0;
-                    String toPrint = condition + "   " + type + "     " + longitude + "   " + lat;
+                    String toPrint = condition + " " + type + "  " + longitude + " " + lat + "  " + month + "/" + date + "  " + hours + ":" + minutes;
                     reportList.add(toPrint);
                 }
                 ArrayAdapter<String> reportsAdapter = new ArrayAdapter<String>(ReportsActivity.this, android.R.layout.simple_list_item_1,reportList);

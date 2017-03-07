@@ -162,9 +162,10 @@ public class WelcomeActivity extends AppCompatActivity {
                 uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 type = dataSnapshot.child("type").getValue(String.class);
                 name = dataSnapshot.child("name").getValue(String.class);
+                Log.d("ONDATACHANGE", type + " " + name);
                 zip = dataSnapshot.child("zipcode").getValue(int.class);
                 phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
-                Log.d("ONDATACHANGE", type + " " + name);
+
                 if (type.equals("user")) {
                     Model.getInstance().setCurrentUser(new User(uniqueId, name, email, zip, phoneNumber));
                 } else if (type.equals("worker")) {
@@ -260,6 +261,7 @@ public class WelcomeActivity extends AppCompatActivity {
                             //mUserDatabase.child(uniqueId).child("email").setValue(email);
                             //mUserDatabase.child(uniqueId).child("name").setValue(displayName);
                             intent = new Intent(WelcomeActivity.this, CreateProfile.class);
+                            startActivity(intent);
                         } else {
                             //mUserDatabase.setValue(uniqueId);
                             //mUserDatabase.child("email").setValue(email);
