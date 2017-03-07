@@ -76,6 +76,9 @@ public class FillReportActivity extends AppCompatActivity {
         SourceReport report = new SourceReport(user, userLocation, wt, wc);
         Log.d("INSTANTIATED REPORT", report.toString());
         report.writeToDatabase();
+        Intent intent = new Intent(this, ReportsActivity.class);
+        startActivity(intent);
+
 
     }
     public void cancel(View v) {
