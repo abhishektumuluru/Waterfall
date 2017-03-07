@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,14 +57,20 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Model model = Model.getInstance();
+        View nameemail = navigationView.getHeaderView(0);
+        TextView nameText = (TextView) nameemail.findViewById(R.id.headerName);
+        TextView emailText = (TextView) nameemail.findViewById(R.id.headerEmail);
         if (model.getInstance().getCurrentUser() != null) {
             String name = Model.getInstance().getCurrentUser().getName();
-            Log.d("FINALLY", name);
-//          String type = Model.getInstance().getCurrentUser().getType();
+            nameText.setText(name);
+            String email = Model.getInstance().getCurrentUser().getEmail();
+            emailText.setText(email);
         } else {
-            Log.d("IT's NULL", NULL);
+            String name = "Log in!";
+            nameText.setText(name);
+            String email = "";
+            emailText.setText(email);
         }
-
     }
 
     /**
@@ -111,15 +118,25 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.view_water_sources) {
+            Intent intent = new Intent(this, ReportsActivity.class);
+            startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.add_water_report) {
+            Intent intent = new Intent(this, FillReportActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+            Intent send = new Intent();
+            send.setAction(Intent.ACTION_SEND);
+            send.setType("text/plain");
+            send.putExtra(Intent.EXTRA_SUBJECT, "Sent via WaterFall!");
+            Intent.createChooser(send,"Share with");
+            startActivity(send);
 
         } else if (id == R.id.nav_editprof) {
             Intent intent = new Intent(this, CreateProfile.class);

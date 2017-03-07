@@ -14,7 +14,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/view_reports_btn"
         style="@style/com_facebook_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,4 +23,15 @@
         android:onClick="viewReports"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/view_map_btn"
+        style="@style/com_facebook_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view_reports_btn"
+        android:layout_alignEnd="@+id/view_reports_btn"
+        android:layout_alignStart="@+id/view_reports_btn"
+        android:layout_marginBottom="28dp"
+        android:text="View Map" />
 </RelativeLayout>

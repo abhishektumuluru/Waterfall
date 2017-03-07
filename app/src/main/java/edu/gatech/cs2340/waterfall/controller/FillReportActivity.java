@@ -2,6 +2,7 @@ package edu.gatech.cs2340.waterfall.controller;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -76,5 +77,9 @@ public class FillReportActivity extends AppCompatActivity {
         Log.d("INSTANTIATED REPORT", report.toString());
         report.writeToDatabase();
 
+    }
+    public void cancel(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

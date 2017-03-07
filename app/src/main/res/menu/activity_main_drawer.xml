@@ -3,13 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/view_water_sources"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="View Water Sources" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/add_water_report"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Add Water Report" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -20,7 +20,7 @@
             android:title="Edit Profile" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@android:drawable/ic_menu_revert"
             android:title="Log Out" />
     </group>
 
@@ -28,7 +28,7 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@android:drawable/ic_menu_share"
                 android:title="Share" />
             <item
                 android:id="@+id/nav_send"

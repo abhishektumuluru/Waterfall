@@ -38,7 +38,9 @@ public class ReportsActivity extends AppCompatActivity {
                     String condition = report.child("condition").getValue(String.class);
                     String type = report.child("type").getValue(String.class);
                     Double lat = report.child("location").child("latitude").getValue(Double.class);
+                    lat = (Math.round(lat * 100.0)) / 100.0;
                     Double longitude = report.child("location").child("longitude").getValue(Double.class);
+                    longitude = (Math.round(longitude * 100.0)) / 100.0;
                     String toPrint = condition + "   " + type + "     " + longitude + "   " + lat;
                     reportList.add(toPrint);
                 }
