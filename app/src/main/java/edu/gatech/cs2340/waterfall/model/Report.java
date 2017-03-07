@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by seanrsain on 3/5/17.
@@ -73,7 +74,8 @@ public abstract class Report implements Parcelable{
 
     public Report(User user, Location location){
         this.date = new Date();
-        reportCounts++;
+        Random random = new Random();
+        reportCounts = random.nextInt(30000);
         this.user = user;
         this.location = location;
         this.userName = user.getName();
