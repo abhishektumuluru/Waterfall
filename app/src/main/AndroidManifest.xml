@@ -22,7 +22,11 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controller.CreateProfile" />
+<<<<<<< HEAD
         <activity android:name=".controller.FillReportActivity"></activity>
+=======
+        <activity android:name=".controller.ReportsActivity"></activity>
+>>>>>>> 943c7081b166a21cbbf67ce787435adea727912c
     </application>
 
 </manifest>
