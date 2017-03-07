@@ -37,6 +37,9 @@ public class SourceReport extends Report{
         WaterType = WT;
         WaterCondition = WC;
     }
+    public String toString() {
+        return "Source Report: " + "Type: " + WaterType.toString() + " Condition: " + WaterCondition.toString();
+    }
 
     public void writeToDatabase() {
         DatabaseReference mReportDatabase = WelcomeActivity.getmReportDatabase();

@@ -33,6 +33,9 @@ public class PurityReport extends Report {
         mReportDatabase.child(getReportNo()).child("virus").setValue(virusPPM);
         mReportDatabase.child(getReportNo()).child("containment").setValue(containmentPPM);
     }
+    public String toString() {
+        return "Purity Report: " + "virusPPM: " + virusPPM + " containmentPPM " + containmentPPM;
+    }
 
     @Override
     public int describeContents() {
