@@ -29,13 +29,17 @@ import edu.gatech.cs2340.waterfall.model.Model;
 import edu.gatech.cs2340.waterfall.model.User;
 import edu.gatech.cs2340.waterfall.model.Worker;
 
+import static android.R.attr.data;
+import static android.R.attr.dateTextAppearance;
+import static android.R.attr.type;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     private static FirebaseAuth auth;
     private static final int RC_SIGN_IN = 0;
     private static DatabaseReference mUserDatabase;
     private static DatabaseReference mReportDatabase;
-
+    public static String type;
     public static FirebaseAuth getAuth() {
         return auth;
     }
@@ -72,7 +76,7 @@ public class WelcomeActivity extends AppCompatActivity {
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
             setUser();
             startActivity(intent);
-            finish();
+            //finish();
         } else {
             //open firebase login if current user is null i.e. not signed in
             startActivityForResult(AuthUI.getInstance()
@@ -96,7 +100,20 @@ public class WelcomeActivity extends AppCompatActivity {
         String name = mUserDatabase.child(uniqueId).child("name").orderByValue().toString();
         int zip =  mUserDatabase.child(uniqueId).child("zipcode").orderByValue().hashCode();
         String phone = mUserDatabase.child(uniqueId).child("phone number").orderByValue().toString();
-        String type = mUserDatabase.child(uniqueId).child("type").orderByValue().toString();
+
+        DatabaseReference typ = mUserDatabase.child(uniqueId).child("type");
+        typ.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("LOGGING", "Entered");
+                type = dataSnapshot.getValue().toString();
+
+            }
+            @Override
+            public void onCancelled(DatabaseError e) {
+                Log.d("Error", e.getMessage());
+            }
+        });
         //make a user locally in the model
         if (type.equals("user")) {
             Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
@@ -115,6 +132,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param data The intent which determines the response
      *
      */
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
@@ -126,7 +144,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                 //final String displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 DatabaseReference UserRef = mUserDatabase.child(uniqueId);
-                UserRef.addValueEventListener(new ValueEventListener() {
+                UserRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Object userData = dataSnapshot.getValue();
@@ -154,7 +172,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         }
     }

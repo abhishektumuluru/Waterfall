@@ -67,7 +67,7 @@ public abstract class Report implements Parcelable{
     private String uid;
     private String userName;
     private String reportNo;
-    private static Integer reportCounts;
+    private static int reportCounts;
     private Date date;
 
 
@@ -78,7 +78,7 @@ public abstract class Report implements Parcelable{
         this.location = location;
         this.userName = user.getName();
         this.uid = user.getUid();
-        this.reportNo = uid + reportCounts.toString();
+        this.reportNo = uid + reportCounts;
     }
 
     public abstract void writeToDatabase();

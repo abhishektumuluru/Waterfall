@@ -13,4 +13,13 @@
     tools:context="edu.gatech.cs2340.waterfall.controller.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="185dp"
+        android:onClick="openReportFillPage"
+        android:text="Submit Report" />
 </RelativeLayout>

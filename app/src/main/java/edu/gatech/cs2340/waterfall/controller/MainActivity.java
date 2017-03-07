@@ -144,5 +144,10 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void openReportFillPage(View view) {
+
+        Intent intent = new Intent(this, FillReportActivity.class);
+        startActivity(intent);
+    }
 
 }
