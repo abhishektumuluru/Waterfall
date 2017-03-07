@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +36,8 @@ public class FillReportActivity extends AppCompatActivity {
     private Spinner wcSpinner;
     private EditText virusLevel;
     private EditText containmentLevel;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class FillReportActivity extends AppCompatActivity {
         wtSpinner.setAdapter(new ArrayAdapter<waterType>(this, android.R.layout.simple_spinner_item, waterType.values()));
         wcSpinner.setAdapter(new ArrayAdapter<waterCondition>(this, android.R.layout.simple_spinner_item, waterCondition.values()));
 
+
     }
 
     public void submit(View view) {
@@ -61,43 +66,15 @@ public class FillReportActivity extends AppCompatActivity {
         int virus = Integer.parseInt(virusLevel.getText().toString());
         int containment = Integer.parseInt(containmentLevel.getText().toString());
         User user = Model.getInstance().getCurrentUser();
-
-
-        LocationManager locationManager = null;
-        Location location = getLastKnownLocation(locationManager);
-//        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//        LocationListener locationListener = new CurrentLocationListener();
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
-//        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        //SourceReport sr = new SourceReport(model.getCurrentUser(), location, wt, wc);
-        String locationStr = "Lats: " + location.getLatitude() + " Long: " + location.getLongitude();
+        GPSTracker gps = new GPSTracker(this);
+        Location userLocation = gps.getLocation();
+        double latitude = gps.getLatitude();
+        double longitude = gps.getLongitude();
+        String locationStr = "Lats: " + latitude + " Long: " + longitude;
         Log.d("Submit", locationStr);
-        SourceReport report = new SourceReport(user, location, wt, wc);
+        SourceReport report = new SourceReport(user, userLocation, wt, wc);
         Log.d("INSTANTIATED REPORT", report.toString());
         report.writeToDatabase();
 
-
     }
-    private Location getLastKnownLocation(LocationManager locationManager) {
-        locationManager = (LocationManager)getApplicationContext().getSystemService(LOCATION_SERVICE);
-        List<String> providers = locationManager.getProviders(true);
-        int permissionCheck = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION);
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
-        }
-        Location loc = null;
-        for (String provider : providers) {
-            Location l = locationManager.getLastKnownLocation(provider);
-            if (l == null) {
-                continue;
-            }
-            if (loc == null || l.getAccuracy() < loc.getAccuracy()) {
-                // Found best last known location: %s", l);
-                loc = l;
-            }
-        }
-        return loc;
-    }
-
 }
