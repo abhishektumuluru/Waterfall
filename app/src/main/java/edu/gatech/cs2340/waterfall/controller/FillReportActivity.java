@@ -58,6 +58,12 @@ public class FillReportActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param view the fill reprot view where asks for source report info
+     * Submit the information collected and go back to the reports acticity
+     *
+     */
     public void submit(View view) {
         final Model model = Model.getInstance();
         overallCondition oc = (overallCondition) ocSpinner.getSelectedItem();
@@ -81,6 +87,13 @@ public class FillReportActivity extends AppCompatActivity {
 
 
     }
+
+
+    /**
+     *
+     * @param v the view
+     * if the user cancels adding the water report
+     */
     public void cancel(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

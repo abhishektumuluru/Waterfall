@@ -100,44 +100,13 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Retrieve the user details from firebase and set the local current user in the model
-     */
-//    public static void setUser() {
-//        Log.d("LOGGED", "SET USER CALLED");
-//        String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//        Log.d("EMAIL FROM FIREBASE", email);
-//        String name = mUserDatabase.child(uniqueId).child("name").orderByValue().toString();
-//        int zip = mUserDatabase.child(uniqueId).child("zipcode").orderByValue().hashCode();
-//        String phone = mUserDatabase.child(uniqueId).child("phone number").orderByValue().toString();
-//
-//        DatabaseReference typ = mUserDatabase.child(uniqueId).child("type");
-//        typ.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Log.d("LOGGING", "Entered");
-//                type = dataSnapshot.getValue().toString();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError e) {
-//                Log.d("Error", e.getMessage());
-//            }
-//        });
-//        //make a user locally in the model
-//        if (type.equals("user")) {
-//            Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
-//        } else if (type.equals("worker")) {
-//            Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phone));
-//        } else if (type.equals("manager")) {
-//            Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phone));
-//        } else if (type.equals("admin")) {
-//            Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phone));
-//        }
-//    }
 
+    /**
+     *
+     * @param ref reference to the database
+     * @param listener an instance of the get data listener
+     * check if we can read data
+     */
     public void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -154,6 +123,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * set the current user in the model after retrieving from firebase
+     * @param ref reference to the database
+     */
     public void setUser(DatabaseReference ref) {
         readData(ref, new OnGetDataListener() {
             @Override
@@ -190,49 +163,6 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
     }
-//    public static void setUser() {
-//        Log.d("LOGGED", "SET USER CALLED");
-//        final String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//        Log.d("EMAIL FROM FIREBASE", email);
-//        DatabaseReference ref = mUserDatabase.child(uniqueId);
-//        //make a user locally in the model
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-////                type = dataSnapshot.child("type").getValue(String.class);
-////                name = dataSnapshot.child("name").getValue(String.class);
-////                zip = dataSnapshot.child("zipcode").getValue(int.class);
-////                phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
-////                Log.d("ONDATACHANGE", type + " " + name);
-////                if (type.equals("user")) {
-////                    Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phoneNumber));
-////                } else if (type.equals("worker")) {
-////                    Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phoneNumber));
-////                } else if (type.equals("manager")) {
-////                    Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phoneNumber));
-////                } else if (type.equals("admin")) {
-////                    Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phoneNumber));
-////                }
-////                Log.d("ONDATACHANGE", "Excuted");
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-////        if (type.equals("user")) {
-////            Model.getInstance().setCurrentUser(new User(uniqueId, email, name, zip, phone));
-////        } else if (type.equals("worker")) {
-////            Model.getInstance().setCurrentUser(new Worker(uniqueId, email, name, zip, phone));
-////        } else if (type.equals("manager")) {
-////            Model.getInstance().setCurrentUser(new Manager(uniqueId, email, name, zip, phone));
-////        } else if (type.equals("admin")) {
-////            Model.getInstance().setCurrentUser(new Administrator(uniqueId, email, name, zip, phone));
-////        }
-//    }
 
     /**
      * @param requestCode The request code
@@ -240,7 +170,6 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param data The intent which determines the response
      *
      */
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {

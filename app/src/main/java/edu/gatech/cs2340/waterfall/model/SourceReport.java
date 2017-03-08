@@ -37,10 +37,16 @@ public class SourceReport extends Report{
         WaterType = WT;
         WaterCondition = WC;
     }
+
+    /**
+     *
+     * @return String of Source Report
+     */
     public String toString() {
         return "Source Report: " + "Type: " + WaterType.toString() + " Condition: " + WaterCondition.toString();
     }
 
+    @Override
     public void writeToDatabase() {
         DatabaseReference mReportDatabase = WelcomeActivity.getmReportDatabase();
         mReportDatabase.child(getReportNo()).child("dateAndTime").setValue(getDate());

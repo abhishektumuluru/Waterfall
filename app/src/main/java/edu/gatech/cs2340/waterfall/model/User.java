@@ -3,6 +3,7 @@ package edu.gatech.cs2340.waterfall.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
+import android.support.v4.view.ViewCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -13,34 +14,67 @@ import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
 public class User implements Parcelable {
     //Getters and setters for user class
+
+    /**
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name to change
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return the uid
+     */
     public String getUid() {
         return uid;
     }
 
+    /**
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @return the zipcode
+     */
     public int getZipcode() {
         return zipcode;
     }
 
+    /**
+     *
+     * @param zipcode to change
+     */
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
 
+    /**
+     *
+     * @return the phone number
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     *
+     * @param phoneNumber to change
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -71,10 +105,12 @@ public class User implements Parcelable {
 
     }
 
+    @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
     public void writeToParcel(Parcel parcel, int flag) {
         parcel.writeString(this.name);
         parcel.writeString(this.uid);

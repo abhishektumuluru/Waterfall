@@ -29,6 +29,11 @@ public class ReportsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * populate the listview in the reports activity
+     * @param ref the reference to the database
+     * @param reports the reports
+     */
     public void populateListview(DatabaseReference ref, final ListView reports) {
         readData(ref, new OnGetDataListener() {
             @Override
@@ -65,6 +70,11 @@ public class ReportsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * read the data from the database
+     * @param ref to the dtabase
+     * @param listener the data listener
+     */
     public void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -81,6 +91,10 @@ public class ReportsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * if the user wants to submit the report, go to the fill reports activity
+     * @param view of the user
+     */
     public void openReportFillPage(View view) {
 
         Intent intent = new Intent(this, FillReportActivity.class);

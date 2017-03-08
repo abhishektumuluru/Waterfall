@@ -7,7 +7,20 @@ import com.google.firebase.database.DataSnapshot;
  */
 
 public interface OnGetDataListener {
+
+    /**
+     * define what happens on success
+     * @param dataSnapshot snapshaot of the data
+     */
     void onSuccess(DataSnapshot dataSnapshot);
+
+    /**
+     * define what happens when start listening to data
+     */
     void onStart();
+
+    /**
+     * define what happnes of failure of retrieving data
+     */
     void onFailure();
 }

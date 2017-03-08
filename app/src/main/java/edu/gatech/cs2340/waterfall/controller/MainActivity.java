@@ -177,7 +177,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
+    /**
+     * when view reports is clicked we want to go to report activity
+     * @param view the view that user is on
+     */
     public void viewReports(View view) {
 
         Intent intent = new Intent(this, ReportsActivity.class);

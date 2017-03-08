@@ -24,6 +24,7 @@ public class PurityReport extends Report {
         containmentPPM = containment;
     }
 
+    @Override
     public void writeToDatabase() {
         DatabaseReference mReportDatabase = WelcomeActivity.getmReportDatabase();
         mReportDatabase.child(getReportNo()).child("dateAndTime").setValue(getDate());
@@ -33,6 +34,11 @@ public class PurityReport extends Report {
         mReportDatabase.child(getReportNo()).child("virus").setValue(virusPPM);
         mReportDatabase.child(getReportNo()).child("containment").setValue(containmentPPM);
     }
+
+    /**
+     *
+     * @return String representation of Purity Report
+     */
     public String toString() {
         return "Purity Report: " + "virusPPM: " + virusPPM + " containmentPPM " + containmentPPM;
     }
