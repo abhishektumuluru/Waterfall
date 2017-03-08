@@ -85,6 +85,8 @@ public class CreateProfile extends AppCompatActivity {
             newUser.writeToDatabase("admin");
             Model.getInstance().setCurrentUser(newUser);
         }
+        Intent intent = new Intent(CreateProfile.this, MainActivity.class);
+        startActivity(intent);
 
     }
 }
