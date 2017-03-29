@@ -49,19 +49,30 @@ public class WelcomeActivity extends AppCompatActivity {
     private static String uniqueId;
     private static String email;
 
-
+    /**
+     * getter method for auth
+     */
     public static FirebaseAuth getAuth() {
         return auth;
     }
 
+    /**
+     * getter method for userdatabase
+     */
     public static DatabaseReference getmUserDatabase() {
         return mUserDatabase;
     }
 
+    /**
+     * getter method for source report database
+     */
     public static DatabaseReference getmSourceReportDatabase() {
         return mSourceReportDatabase;
     }
 
+    /**
+     * getter method for purity report database
+     */
     public static DatabaseReference getmPurityReportDatabase() {
         return mPurityReportDatabase;
     }

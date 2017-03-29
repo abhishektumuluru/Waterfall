@@ -99,6 +99,8 @@ public class MainActivityManager extends AppCompatActivity
 
     /**
      * Inflate the menu; this adds items to the action bar if it is present.
+     * @return boolean
+     * @param menu menu object
 
      */
     @Override
@@ -194,6 +196,10 @@ public class MainActivityManager extends AppCompatActivity
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param view map view
+     */
     public void viewMap(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);

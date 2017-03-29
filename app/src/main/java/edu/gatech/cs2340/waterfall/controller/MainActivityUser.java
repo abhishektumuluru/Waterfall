@@ -183,6 +183,10 @@ public class MainActivityUser extends AppCompatActivity
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param view map view
+     */
     public void viewMap(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);

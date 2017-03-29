@@ -25,6 +25,10 @@ public class SourceReport extends Report{
         return WaterCondition;
     }
 
+    /**
+     *
+     * @param waterCondition water condition
+     */
     public void setWaterCondition(waterCondition waterCondition) {
         WaterCondition = waterCondition;
     }
