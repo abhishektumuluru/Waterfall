@@ -39,7 +39,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private static FirebaseAuth auth;
     private static final int RC_SIGN_IN = 0;
     private static DatabaseReference mUserDatabase;
-    private static DatabaseReference mReportDatabase;
+    private static DatabaseReference mSourceReportDatabase;
+    private static DatabaseReference mPurityReportDatabase;
 
     private static String type;
     private static String name;
@@ -57,8 +58,12 @@ public class WelcomeActivity extends AppCompatActivity {
         return mUserDatabase;
     }
 
-    public static DatabaseReference getmReportDatabase() {
-        return mReportDatabase;
+    public static DatabaseReference getmSourceReportDatabase() {
+        return mSourceReportDatabase;
+    }
+
+    public static DatabaseReference getmPurityReportDatabase() {
+        return mPurityReportDatabase;
     }
 
     @Override
@@ -79,15 +84,14 @@ public class WelcomeActivity extends AppCompatActivity {
     public void openLoginScreen(View view) {
         auth = FirebaseAuth.getInstance();
         mUserDatabase = FirebaseDatabase.getInstance().getReference("users");
-        mReportDatabase = FirebaseDatabase.getInstance().getReference("Reports");
+        mSourceReportDatabase = FirebaseDatabase.getInstance().getReference("Source Reports");
+        mPurityReportDatabase = FirebaseDatabase.getInstance().getReference("Purity Reports");
         if (auth.getCurrentUser() != null) {
             Log.d("LOGGED", auth.getCurrentUser().getEmail());
             //finish();
             String uid = auth.getCurrentUser().getUid();
             DatabaseReference ref = mUserDatabase.child(uid);
             setUser(ref);
-//            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-//            startActivity(intent);
         } else {
             //open firebase login if current user is null i.e. not signed in
             startActivityForResult(AuthUI.getInstance()
@@ -138,17 +142,20 @@ public class WelcomeActivity extends AppCompatActivity {
                 Log.d("ONDATACHANGE", type + " " + name);
                 zip = dataSnapshot.child("zipcode").getValue(int.class);
                 phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
-
+                Intent intent = null;
                 if (type.equals("user")) {
                     Model.getInstance().setCurrentUser(new User(uniqueId, name, email, zip, phoneNumber));
+                    intent = new Intent(WelcomeActivity.this, MainActivityUser.class);
                 } else if (type.equals("worker")) {
                     Model.getInstance().setCurrentUser(new Worker(uniqueId, name, email, zip, phoneNumber));
+                    intent = new Intent(WelcomeActivity.this, MainActivityWorker.class);
                 } else if (type.equals("manager")) {
                     Model.getInstance().setCurrentUser(new Manager(uniqueId, name, email, zip, phoneNumber));
+                    intent = new Intent(WelcomeActivity.this, MainActivityManager.class);
                 } else if (type.equals("admin")) {
                     Model.getInstance().setCurrentUser(new Administrator(uniqueId, name, email, zip, phoneNumber));
+                    intent = new Intent(WelcomeActivity.this, MainActivityAdmin.class);
                 }
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
             }
 
@@ -195,7 +202,6 @@ public class WelcomeActivity extends AppCompatActivity {
                             //mUserDatabase.setValue(uniqueId);
                             //mUserDatabase.child("email").setValue(email);
                             setUser(UserRef);
-                            //intent = new Intent(WelcomeActivity.this, MainActivity.class);
                         }
                         //startActivity(intent);
                         finish();
@@ -208,8 +214,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 });
                 Log.d("AUTH", auth.getCurrentUser().getEmail());
 
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                startActivity(intent);
+
                 //finish();
             }
         }

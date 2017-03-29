@@ -22,12 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".controller.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controller.CreateProfile" />
-        <activity android:name=".controller.FillReportActivity" />
         <activity android:name=".controller.ReportsActivity" />
 
         <!--
@@ -44,7 +39,23 @@
 
         <activity
             android:name=".controller.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".controller.MainActivityUser"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.MainActivityWorker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.MainActivityManager"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controller.MainActivityAdmin"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controller.FillSourceReportActivity" />
+        <activity android:name=".controller.FillPurityReportActivity" />
+        <activity android:name=".controller.SourceReportsActivity" />
+        <activity android:name=".controller.PurityReportsActivity"></activity>
     </application>
 
 </manifest>

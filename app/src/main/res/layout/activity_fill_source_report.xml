@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.gatech.cs2340.waterfall.controller.FillReportActivity">
+
+
+    <Button
+        android:id="@+id/submit_report"
+        style="@style/com_facebook_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="438dp"
+        android:layout_marginBottom="19dp"
+        android:onClick="submit"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:onClick="cancel"
+        android:text="Cancel"
+        android:layout_alignBaseline="@+id/submit_report"
+        android:layout_alignBottom="@+id/submit_report"
+        android:layout_toEndOf="@+id/submit_report"
+        android:layout_marginStart="33dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:text="Water Condition"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="34dp" />
+
+    <Spinner
+        android:id="@+id/wcSpinner"
+        android:layout_width="333dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/wcSpinner"
+        android:layout_below="@+id/wcSpinner"
+        android:layout_marginTop="41dp"
+        android:text="Water Type" />
+
+    <Spinner
+        android:id="@+id/wtSpinner"
+        android:layout_width="333dp"
+        android:layout_height="29dp"
+        android:layout_alignStart="@+id/textView14"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

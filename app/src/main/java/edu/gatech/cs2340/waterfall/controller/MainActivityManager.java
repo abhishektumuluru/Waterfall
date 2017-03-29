@@ -25,15 +25,12 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import edu.gatech.cs2340.waterfall.R;
 import edu.gatech.cs2340.waterfall.model.Model;
+import edu.gatech.cs2340.waterfall.model.SourceReport;
 
-import static android.R.attr.mode;
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
-
-public class MainActivity extends AppCompatActivity
+public class MainActivityManager extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 2;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_manager);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.add_water_report) {
-            Intent intent = new Intent(this, FillReportActivity.class);
+            Intent intent = new Intent(this, FillPurityReportActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
@@ -165,7 +162,7 @@ public class MainActivity extends AppCompatActivity
                         public void onComplete(@NonNull Task<Void> task) {
                             // user is now signed out
                             Log.d("AUTH", "Logged out");
-                            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                            Intent intent = new Intent(MainActivityManager.this, WelcomeActivity.class);
                             startActivity(intent);
                             finish();
                         }
@@ -181,9 +178,19 @@ public class MainActivity extends AppCompatActivity
      * when view reports is clicked we want to go to report activity
      * @param view the view that user is on
      */
-    public void viewReports(View view) {
+    public void viewSourceReports(View view) {
 
-        Intent intent = new Intent(this, ReportsActivity.class);
+        Intent intent = new Intent(this, SourceReportsActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * when view reports is clicked we want to go to report activity
+     * @param view the view that user is on
+     */
+    public void viewPurityReports(View view) {
+
+        Intent intent = new Intent(this, PurityReportsActivity.class);
         startActivity(intent);
     }
 

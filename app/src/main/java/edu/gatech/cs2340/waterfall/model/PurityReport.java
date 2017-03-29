@@ -26,7 +26,7 @@ public class PurityReport extends Report {
 
     @Override
     public void writeToDatabase() {
-        DatabaseReference mReportDatabase = WelcomeActivity.getmReportDatabase();
+        DatabaseReference mReportDatabase = WelcomeActivity.getmPurityReportDatabase();
         mReportDatabase.child(getReportNo()).child("dateAndTime").setValue(getDate());
         mReportDatabase.child(getReportNo()).child("reporterName").setValue(getUserName());
         mReportDatabase.child(getReportNo()).child("location").setValue(getLocation());

@@ -16,14 +16,14 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.waterfall.R;
 
-public class ReportsActivity extends AppCompatActivity {
+public class SourceReportsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reports);
+        setContentView(R.layout.activity_source_reports);
 
-        ListView reports = (ListView) findViewById(R.id.reports_listview);
+        ListView reports = (ListView) findViewById(R.id.s_reports_listview);
         DatabaseReference ref = WelcomeActivity.getmSourceReportDatabase();
         populateListview(ref, reports);
 
@@ -54,7 +54,7 @@ public class ReportsActivity extends AppCompatActivity {
                     String toPrint = condition + " " + type + "  " + longitude + " " + lat + "  " + month + "/" + date + "  " + hours + ":" + minutes;
                     reportList.add(toPrint);
                 }
-                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<String>(ReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
+                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<String>(SourceReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
                 reports.setAdapter(reportsAdapter);
             }
 

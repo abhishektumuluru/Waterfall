@@ -68,24 +68,28 @@ public class CreateProfile extends AppCompatActivity {
             User oldUser = Model.getInstance().getCurrentUser();
             oldUser.deleteFromDatabase();
         }
+        Intent intent = null;
         if (index == 0) {
             User newUser = new User(uid, name, email, zipcode, phoneNumber);
             newUser.writeToDatabase("user");
             Model.getInstance().setCurrentUser(newUser);
+            intent = new Intent(CreateProfile.this, MainActivityUser.class);
         } else if (index == 1) {
             Worker newUser = new Worker(uid, name, email, zipcode, phoneNumber);
             newUser.writeToDatabase("worker");
             Model.getInstance().setCurrentUser(newUser);
+            intent = new Intent(CreateProfile.this, MainActivityWorker.class);
         } else if (index == 2) {
             Manager newUser = new Manager(uid, name, email, zipcode, phoneNumber);
             newUser.writeToDatabase("manager");
             Model.getInstance().setCurrentUser(newUser);
+            intent = new Intent(CreateProfile.this, MainActivityManager.class);
         } else if (index == 3) {
             Administrator newUser = new Administrator(uid, name, email, zipcode, phoneNumber);
             newUser.writeToDatabase("admin");
             Model.getInstance().setCurrentUser(newUser);
+            intent = new Intent(CreateProfile.this, MainActivityAdmin.class);
         }
-        Intent intent = new Intent(CreateProfile.this, MainActivity.class);
         startActivity(intent);
 
     }

@@ -6,27 +6,6 @@
     android:layout_height="match_parent"
     tools:context="edu.gatech.cs2340.waterfall.controller.FillReportActivity">
 
-    <Spinner
-        android:id="@+id/wcSpinner"
-        android:layout_width="333dp"
-        android:layout_height="29dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="218dp"
-        android:layout_marginBottom="17dp"
-        android:layout_above="@+id/textView8"
-        android:layout_alignStart="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Water Condition"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="191dp"
-        android:layout_marginBottom="20dp"
-        android:layout_above="@+id/wcSpinner"
-        android:layout_alignStart="@+id/wtSpinner" />
-
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -34,9 +13,9 @@
         android:text="Containment Level"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="345dp"
-        android:layout_above="@+id/containmentLevel"
+        android:layout_below="@+id/virusLevel"
         android:layout_alignStart="@+id/virusLevel"
-        android:layout_marginBottom="17dp" />
+        android:layout_marginTop="13dp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -45,9 +24,9 @@
         android:text="Virus Level"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="266dp"
-        android:layout_above="@+id/virusLevel"
-        android:layout_alignStart="@+id/virusLevel"
-        android:layout_marginBottom="17dp" />
+        android:layout_below="@+id/OCspinner"
+        android:layout_alignStart="@+id/OCspinner"
+        android:layout_marginTop="37dp" />
 
     <EditText
         android:id="@+id/virusLevel"
@@ -57,29 +36,9 @@
         android:inputType="numberDecimal"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="294dp"
-        android:layout_marginBottom="12dp"
-        android:layout_above="@+id/textView6"
-        android:layout_alignStart="@+id/submit_report" />
-
-    <Spinner
-        android:id="@+id/wtSpinner"
-        android:layout_width="333dp"
-        android:layout_height="29dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="141dp"
-        android:layout_above="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Water Type"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="116dp"
-        android:layout_below="@+id/OCspinner"
-        android:layout_alignStart="@+id/wtSpinner" />
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_marginTop="18dp" />
 
     <Spinner
         android:id="@+id/OCspinner"
@@ -87,8 +46,9 @@
         android:layout_height="29dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="76dp"
-        android:layout_marginTop="59dp"
-        android:layout_alignStart="@+id/wtSpinner" />
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
@@ -97,8 +57,10 @@
         android:text="Overall Condition"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="34dp"
-        android:layout_alignStart="@+id/OCspinner"
-        android:layout_marginTop="26dp" />
+        android:layout_marginTop="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp" />
 
     <EditText
         android:id="@+id/containmentLevel"
@@ -108,9 +70,9 @@
         android:inputType="numberDecimal"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="376dp"
-        android:layout_marginBottom="19dp"
-        android:layout_above="@+id/submit_report"
-        android:layout_alignStart="@+id/textView6" />
+        android:layout_below="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_marginTop="13dp" />
 
     <Button
         android:id="@+id/submit_report"
@@ -120,10 +82,10 @@
         android:text="Submit"
         tools:layout_editor_absoluteX="132dp"
         tools:layout_editor_absoluteY="438dp"
-        android:layout_marginBottom="19dp"
         android:onClick="submit"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/textView5" />
+        android:layout_below="@+id/containmentLevel"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginTop="69dp" />
 
     <Button
         android:id="@+id/button2"
@@ -132,7 +94,8 @@
         android:layout_height="60dp"
         android:onClick="cancel"
         android:text="Cancel"
-        android:layout_below="@+id/containmentLevel"
-        android:layout_alignEnd="@+id/wtSpinner" />
+        android:layout_alignBottom="@+id/submit_report"
+        android:layout_toEndOf="@+id/textView6"
+        android:layout_marginStart="18dp" />
 
 </RelativeLayout>
