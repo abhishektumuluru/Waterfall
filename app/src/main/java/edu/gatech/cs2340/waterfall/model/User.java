@@ -155,14 +155,14 @@ public class User implements Parcelable {
     /**
      * Allow the user to submit a water report
      */
-    public void submitReport() {
-        //TODO
-    }
+//     public void submitReport() {
+//         //TODO
+//     }
 
     /**
      * View water sources in your area
      */
-    public void viewSources() {
-        //TODO
-    }
+//     public void viewSources() {
+//         //TODO
+//     }
 }
