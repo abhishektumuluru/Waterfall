@@ -55,7 +55,9 @@
         <activity android:name=".controller.FillSourceReportActivity" />
         <activity android:name=".controller.FillPurityReportActivity" />
         <activity android:name=".controller.SourceReportsActivity" />
-        <activity android:name=".controller.PurityReportsActivity"></activity>
+        <activity android:name=".controller.PurityReportsActivity" />
+        <activity android:name=".controller.GraphActivity"
+                  android:screenOrientation="landscape" />
     </application>
 
 </manifest>

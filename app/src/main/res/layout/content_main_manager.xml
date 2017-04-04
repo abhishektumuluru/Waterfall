@@ -45,4 +45,15 @@
         android:layout_marginBottom="51dp"
         android:text="View Purity Reports"
         android:onClick="viewPurityReports"/>
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/com_facebook_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:text="View Historical Reports"
+        android:layout_above="@+id/view_map_btn_worker"
+        android:layout_centerHorizontal="true"
+        android:onClick="viewGraph"/>
 </RelativeLayout>

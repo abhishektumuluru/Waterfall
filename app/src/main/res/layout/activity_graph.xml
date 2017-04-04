@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.gatech.cs2340.waterfall.controller.GraphActivity">
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="250dip"
+        android:layout_marginTop="150dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="22dp"
+        android:text="Location" />
+
+    <Spinner
+        android:id="@+id/locSpinner"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="14dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView"
+        android:layout_marginStart="48dp"
+        android:layout_toEndOf="@+id/locSpinner"
+        android:text="Year" />
+
+    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_alignTop="@+id/locSpinner" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView10"
+        android:layout_marginStart="64dp"
+        android:layout_toEndOf="@+id/yearSpinner"
+        android:text="Data Type" />
+
+    <RadioGroup
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_alignStart="@+id/textView12"
+        android:layout_alignTop="@+id/yearSpinner">
+
+        <RadioButton
+            android:id="@+id/virus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Virus"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/cunt_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Contaminant"
+            android:onClick="onRadioButtonClicked"/>
+
+    </RadioGroup>
+
+</RelativeLayout>

@@ -205,4 +205,13 @@ public class MainActivityManager extends AppCompatActivity
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param view graph view
+     */
+    public void viewGraph(View view) {
+        Intent intent = new Intent(this, GraphActivity.class);
+        startActivity(intent);
+    }
+
 }
