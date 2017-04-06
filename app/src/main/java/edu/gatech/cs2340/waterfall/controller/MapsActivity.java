@@ -3,7 +3,6 @@ package edu.gatech.cs2340.waterfall.controller;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -82,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * @param ref database reference
      * @param listener data listener
      */
-    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
+    private void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

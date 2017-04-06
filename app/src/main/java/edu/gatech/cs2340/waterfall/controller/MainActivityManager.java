@@ -28,7 +28,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.waterfall.R;
 import edu.gatech.cs2340.waterfall.model.Model;
-import edu.gatech.cs2340.waterfall.model.SourceReport;
 
 public class MainActivityManager extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{

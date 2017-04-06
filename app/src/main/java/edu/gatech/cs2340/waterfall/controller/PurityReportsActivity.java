@@ -34,11 +34,11 @@ public class PurityReportsActivity extends AppCompatActivity {
      * @param ref the reference to the database
      * @param reports the reports
      */
-    public void populateListview(DatabaseReference ref, final ListView reports) {
+    private void populateListview(DatabaseReference ref, final ListView reports) {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                ArrayList<String> reportList = new ArrayList<String>();
+                ArrayList<String> reportList = new ArrayList<>();
                 reportList.add("Condition  Virus Containment  Long  Lat  Date Time");
                 for (DataSnapshot report: dataSnapshot.getChildren()) {
                     String condition = report.child("overallCondition").getValue(String.class);
@@ -55,7 +55,7 @@ public class PurityReportsActivity extends AppCompatActivity {
                     String toPrint = condition + " " + virus + "  " + containment + " " + longitude + " " + lat + "  " + month + "/" + date + "  " + hours + ":" + minutes;
                     reportList.add(toPrint);
                 }
-                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<String>(PurityReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
+                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<>(PurityReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
                 reports.setAdapter(reportsAdapter);
             }
 
@@ -76,7 +76,7 @@ public class PurityReportsActivity extends AppCompatActivity {
      * @param ref to the dtabase
      * @param listener the data listener
      */
-    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
+    private void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

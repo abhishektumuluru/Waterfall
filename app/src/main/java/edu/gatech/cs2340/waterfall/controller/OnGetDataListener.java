@@ -6,7 +6,7 @@ import com.google.firebase.database.DataSnapshot;
  * Created by Mohit Chauhan on 3/6/2017.
  */
 
-public interface OnGetDataListener {
+interface OnGetDataListener {
 
     /**
      * define what happens on success

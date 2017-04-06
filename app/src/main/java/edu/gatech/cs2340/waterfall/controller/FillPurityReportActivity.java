@@ -33,7 +33,7 @@ public class FillPurityReportActivity extends AppCompatActivity {
         virusLevel = (EditText) findViewById(R.id.virusLevel);
         containmentLevel = (EditText) findViewById(R.id.containmentLevel);
 
-        ocSpinner.setAdapter(new ArrayAdapter<overallCondition>(this, android.R.layout.simple_spinner_item, overallCondition.values()));
+        ocSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, overallCondition.values()));
 
 
 
@@ -73,7 +73,7 @@ public class FillPurityReportActivity extends AppCompatActivity {
      * @param v the view
      * if the user cancels adding the water report
      */
-    public void cancel(View v) {
+    protected void cancel(View v) {
         Intent i = getIntent();
         Intent intent;
         if (i.hasExtra("Worker")) {

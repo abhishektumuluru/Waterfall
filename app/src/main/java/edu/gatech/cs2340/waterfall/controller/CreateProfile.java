@@ -3,14 +3,12 @@ package edu.gatech.cs2340.waterfall.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import edu.gatech.cs2340.waterfall.model.*;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
