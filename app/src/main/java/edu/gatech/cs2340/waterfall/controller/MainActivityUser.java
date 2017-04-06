@@ -24,11 +24,11 @@ import android.widget.TextView;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.waterfall.R;
 import edu.gatech.cs2340.waterfall.model.Model;
 
+@SuppressWarnings("UnusedParameters")
 public class MainActivityUser extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -58,11 +58,10 @@ public class MainActivityUser extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Model model = Model.getInstance();
         View nameEmail = navigationView.getHeaderView(0);
         TextView nameText = (TextView) nameEmail.findViewById(R.id.headerName);
         TextView emailText = (TextView) nameEmail.findViewById(R.id.headerEmail);
-        if (model.getInstance().getCurrentUser() != null) {
+        if (Model.getInstance().getCurrentUser() != null) {
             String name = Model.getInstance().getCurrentUser().getName();
             nameText.setText(name);
             String email = Model.getInstance().getCurrentUser().getEmail();

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_main"
+    android:id="@+id/content_main_worker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -21,7 +21,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="124dp"
         android:onClick="viewSourceReports"
-        android:text="View Source Reports" />
+        android:text="View Source Reports"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/view_map_btn_worker"
@@ -33,7 +34,8 @@
         android:layout_alignStart="@+id/view_reports_btn_worker"
         android:layout_marginBottom="28dp"
         android:text="View Map"
-        android:onClick="viewMap"/>
+        android:onClick="viewMap"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/add_reports_purity_worker"
@@ -44,5 +46,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="51dp"
         android:onClick="addPurityReport"
-        android:text="Add Purity Reports" />
+        android:text="Add Purity Reports"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>

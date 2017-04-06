@@ -16,7 +16,8 @@
         android:layout_below="@+id/virusLevel"
         android:layout_alignStart="@+id/virusLevel"
         android:layout_marginTop="13dp"
-        android:labelFor="@+id/containmentLevel"/>
+        android:labelFor="@+id/containmentLevel"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView8"
@@ -28,7 +29,8 @@
         android:layout_below="@+id/overallConditionSpinner"
         android:layout_alignStart="@+id/overallConditionSpinner"
         android:layout_marginTop="37dp"
-        android:labelFor="@+id/virusLevel"/>
+        android:labelFor="@+id/virusLevel"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/virusLevel"
@@ -62,7 +64,8 @@
         android:layout_marginTop="26dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="32dp" />
+        android:layout_marginStart="32dp"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/containmentLevel"
@@ -87,7 +90,8 @@
         android:onClick="submit"
         android:layout_below="@+id/containmentLevel"
         android:layout_alignEnd="@+id/textView4"
-        android:layout_marginTop="69dp" />
+        android:layout_marginTop="69dp"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/button2"
@@ -98,6 +102,7 @@
         android:text="Cancel"
         android:layout_alignBottom="@+id/submit_report"
         android:layout_toEndOf="@+id/textView6"
-        android:layout_marginStart="18dp" />
+        android:layout_marginStart="18dp"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

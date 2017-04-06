@@ -17,6 +17,7 @@ import edu.gatech.cs2340.waterfall.model.User;
 import edu.gatech.cs2340.waterfall.model.waterCondition;
 import edu.gatech.cs2340.waterfall.model.waterType;
 
+@SuppressWarnings("UnusedParameters")
 public class FillSourceReportActivity extends AppCompatActivity {
     private Spinner wtSpinner;
     private Spinner wcSpinner;

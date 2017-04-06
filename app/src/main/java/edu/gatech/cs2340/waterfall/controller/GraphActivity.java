@@ -48,10 +48,6 @@ public class GraphActivity extends AppCompatActivity {
                     lat = (Math.round(lat * 100.0)) / 100.0;
                     double[] loc = {lang, lat};
                     locations.add(Arrays.toString(loc));
-<<<<<<< HEAD
-=======
-                    Log.d("LOCATION", loc.toString());
->>>>>>> 7a3c6ae089d9be052ed19e1172af31c93ae6fd4b
                 }
                 List<String> locList = new ArrayList<>(locations);
                 locSpinner.setAdapter(new ArrayAdapter<>(GraphActivity.this, android.R.layout.simple_spinner_item, locList));
@@ -103,8 +99,6 @@ public class GraphActivity extends AppCompatActivity {
         final LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
         //Spinner locSpinner = (Spinner) findViewById(R.id.locSpinner);
         final String wantedLoc = (String) locSpinner.getSelectedItem();
-        boolean k = wantedLoc == null;
-        String m = k? "true": "false";
         Spinner ySpinner = (Spinner) findViewById(R.id.yearSpinner);
         final int wantedYear = (int) ySpinner.getSelectedItem();
         readData(ref, new OnGetDataListener() {

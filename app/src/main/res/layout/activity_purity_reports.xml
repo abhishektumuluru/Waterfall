@@ -8,11 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-<<<<<<< HEAD
     tools:context="edu.gatech.cs2340.waterfall.controller.PurityReportsActivity">
-=======
-    tools:context="edu.gatech.cs2340.waterfall.controller.ReportsActivity">
->>>>>>> 7a3c6ae089d9be052ed19e1172af31c93ae6fd4b
 
     <ListView
         android:id="@+id/p_reports_listView"
@@ -29,5 +25,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="11dp"
         android:text="Add New Report"
-        android:onClick="openReportFillPage"/>
+        android:onClick="openReportFillPage"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>

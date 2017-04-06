@@ -20,7 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="22dp"
-        android:text="Location" />
+        android:text="Location"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/locSpinner"
@@ -37,7 +38,8 @@
         android:layout_alignTop="@+id/textView"
         android:layout_marginStart="48dp"
         android:layout_toEndOf="@+id/locSpinner"
-        android:text="Year" />
+        android:text="Year"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/yearSpinner"
@@ -53,7 +55,8 @@
         android:layout_alignTop="@+id/textView10"
         android:layout_marginStart="64dp"
         android:layout_toEndOf="@+id/yearSpinner"
-        android:text="Data Type" />
+        android:text="Data Type"
+        tools:ignore="HardcodedText" />
 
     <RadioGroup
         android:layout_width="120dp"
@@ -68,14 +71,16 @@
             android:layout_weight="1"
             android:checked="true"
             android:text="Virus"
-            android:onClick="onRadioButtonClicked"/>
+            android:onClick="onRadioButtonClicked"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
             android:id="@+id/cunt_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="Contaminant"
-            android:onClick="onRadioButtonClicked"/>
+            android:onClick="onRadioButtonClicked"
+            tools:ignore="HardcodedText" />
 
     </RadioGroup>
 

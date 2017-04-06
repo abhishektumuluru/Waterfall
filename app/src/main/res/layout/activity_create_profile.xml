@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.gatech.cs2340.waterfall.controller.CreateProfile">
+    tools:context="edu.gatech.cs2340.waterfall.controller.CreateProfile"
+    tools:ignore="Overdraw">
 
     <EditText
         android:layout_width="wrap_content"
@@ -22,7 +23,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="23dp"
         style="@style/Widget.AppCompat.EditText"
-        android:hint="First and Last Name" />
+        android:hint="First and Last Name"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,7 +36,8 @@
         style="@style/Widget.AppCompat.EditText"
         android:hint="Zip Code"
         android:layout_below="@+id/phone_text"
-        android:layout_alignStart="@+id/phone_text" />
+        android:layout_alignStart="@+id/phone_text"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:text="Select Your Class"
@@ -44,7 +47,8 @@
         android:id="@+id/textView3"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_below="@+id/zipcode_text"
-        android:layout_alignStart="@+id/zipcode_text" />
+        android:layout_alignStart="@+id/zipcode_text"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -63,7 +67,8 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:text="Submit"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -75,6 +80,7 @@
         style="@style/Widget.AppCompat.EditText"
         android:hint="Phone Number"
         android:layout_below="@+id/name_text"
-        android:layout_alignStart="@+id/name_text" />
+        android:layout_alignStart="@+id/name_text"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

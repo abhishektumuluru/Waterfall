@@ -25,6 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="11dp"
         android:text="Add New Report"
-        android:onClick="openReportFillPage"/>
+        android:onClick="openReportFillPage"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>
 

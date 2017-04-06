@@ -15,6 +15,7 @@ public class Administrator extends User{
     }
 
     //creating a parcelable constructor
+    @SuppressWarnings("unused")
     public Administrator(Parcel parcel) {
         super(parcel);
     }
@@ -23,29 +24,10 @@ public class Administrator extends User{
     /**
      * Delete an account from the database
      */
+    @SuppressWarnings("unused")
     public void deleteAccount() {
         DatabaseReference mUserDatabase = WelcomeActivity.getUserDatabase();
         mUserDatabase.child(uid).removeValue();
     }
 
-    /**
-     * Ban a user from the database
-     */
-    public void banUser() {
-        //TODO
-    }
-
-    /**
-     * Unblock a blocked account from the database
-     */
-    public void unblockAccount() {
-        //TODO
-    }
-
-    /**
-     * View the security log
-     */
-    public void viewSecurityLog() {
-        //TODO
-    }
 }

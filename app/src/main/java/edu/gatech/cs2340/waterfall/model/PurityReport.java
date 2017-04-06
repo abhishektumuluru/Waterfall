@@ -7,15 +7,11 @@ import com.google.firebase.database.DatabaseReference;
 
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
-/**
- * Created by Sean on 3/6/17.
- */
-
 public class PurityReport extends Report {
 
-    private overallCondition OverallCondition;
-    private int virusPPM;
-    private int containmentPPM;
+    private final overallCondition OverallCondition;
+    private final int virusPPM;
+    private final int containmentPPM;
 
     public PurityReport(User user, Location location, overallCondition OC, int virus, int containment) {
         super(user, location);

@@ -7,10 +7,8 @@ import android.os.Parcelable;
 import java.util.Date;
 import java.util.Random;
 
-/**
- * Created by Sean on 3/5/17.
- */
 
+@SuppressWarnings("unused")
 public abstract class Report implements Parcelable{
 
     // getter and setter
@@ -27,6 +25,7 @@ public abstract class Report implements Parcelable{
      *
      * @param location the location
      */
+    @SuppressWarnings("unused")
     public void setLocation(Location location) {
         this.location = location;
     }

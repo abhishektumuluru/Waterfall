@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.waterfall.R;
 
+@SuppressWarnings("UnusedParameters")
 public class PurityReportsActivity extends AppCompatActivity {
 
     @Override

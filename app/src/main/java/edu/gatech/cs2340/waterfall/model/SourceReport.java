@@ -7,10 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
-/**
- * Created by Sean on 3/6/17.
- */
-
+@SuppressWarnings("unused")
 public class SourceReport extends Report{
 
     public waterType getWaterType() {

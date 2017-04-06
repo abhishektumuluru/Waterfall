@@ -1,3 +1,5 @@
+//noinspection GradleCompatible
+//noinspection GradleCompatible
 apply plugin: 'com.android.application'
 
 android {
@@ -26,13 +28,16 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    //noinspection GradleDependency
     compile 'com.android.support:appcompat-v7:25.1.1'
+    //noinspection GradleDependency
     compile 'com.android.support:design:25.1.1'
     compile 'com.firebaseui:firebase-ui-auth:1.1.1'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.google.firebase:firebase-auth:10.0.1'
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
+    //noinspection GradleDependency,UseOfBundledGooglePlayServices
     compile 'com.google.android.gms:play-services:10.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     compile 'com.jjoe64:graphview:4.2.1'

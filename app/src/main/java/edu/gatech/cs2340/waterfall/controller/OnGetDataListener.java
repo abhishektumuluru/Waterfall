@@ -2,10 +2,7 @@ package edu.gatech.cs2340.waterfall.controller;
 
 import com.google.firebase.database.DataSnapshot;
 
-/**
- * Created by Mo on 3/6/2017.
- */
-
+@SuppressWarnings("EmptyMethod")
 interface OnGetDataListener {
 
     /**

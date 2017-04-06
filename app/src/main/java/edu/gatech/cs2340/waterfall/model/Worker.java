@@ -3,6 +3,7 @@ package edu.gatech.cs2340.waterfall.model;
 import android.os.Parcel;
 
 
+@SuppressWarnings("unused")
 public class Worker extends User {
     //constructor
     public Worker(String uid, String name, String email, int zipcode, String phoneNumber) {
@@ -13,12 +14,4 @@ public class Worker extends User {
         super(parcel);
     }
 
-    //action methods
-
-    /**
-     * Report the water purity of a particular report
-     */
-    public void reportPurity() {
-        //TODO
-    }
 }

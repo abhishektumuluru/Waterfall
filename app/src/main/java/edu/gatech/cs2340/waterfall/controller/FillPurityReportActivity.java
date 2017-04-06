@@ -72,6 +72,7 @@ public class FillPurityReportActivity extends AppCompatActivity {
      * @param v the view
      * if the user cancels adding the water report
      */
+    @SuppressWarnings({"WeakerAccess", "UnusedParameters"})
     public void cancel(View v) {
         Intent i = getIntent();
         Intent intent;

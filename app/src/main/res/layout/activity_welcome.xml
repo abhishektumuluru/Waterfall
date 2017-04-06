@@ -10,7 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.gatech.cs2340.waterfall.controller.WelcomeActivity">
+    tools:context="edu.gatech.cs2340.waterfall.controller.WelcomeActivity"
+    tools:ignore="Overdraw">
 
     <Button
         android:text="Login"
@@ -24,7 +25,8 @@
         android:width="170dp"
         style="@style/com_facebook_button"
         android:onClick="openLoginScreen"
-        tools:style="@style/CardView.Light" />
+        tools:style="@style/CardView.Light"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -34,5 +36,6 @@
         android:layout_above="@+id/login_btn"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="106dp"
-        android:contentDescription="Waterfall Logo"/>
+        android:contentDescription="Waterfall Logo"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>

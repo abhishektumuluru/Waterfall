@@ -1,34 +1,31 @@
 package edu.gatech.cs2340.waterfall.controller;
 
-/**
- * Created by AbhishekTumuluru on 3/7/2017.
- */
 
-import android.Manifest;
+
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
-@SuppressWarnings("UnusedAssignment")
+@SuppressLint("Registered")
+@SuppressWarnings({"UnusedAssignment", "ConstantConditions"})
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
-    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 2;
 
     // flag for GPS status
     private boolean canGetLocation = false;
 
+    @SuppressWarnings("WeakerAccess")
     Location location; // location
     private double latitude; // latitude
     private double longitude; // longitude
@@ -40,6 +37,7 @@ public class GPSTracker extends Service implements LocationListener {
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60; // 1 minute
 
     // Declaring a Location Manager
+    @SuppressWarnings("WeakerAccess")
     protected LocationManager locationManager;
 
     public GPSTracker(Context context) {
@@ -112,6 +110,7 @@ public class GPSTracker extends Service implements LocationListener {
      * Stop using GPS listener Calling this function will stop using GPS in your
      * app.
      * */
+    @SuppressWarnings("unused")
     public void stopUsingGPS() {
         if (locationManager != null) {
             locationManager.removeUpdates(GPSTracker.this);
@@ -148,6 +147,7 @@ public class GPSTracker extends Service implements LocationListener {
      *
      * @return boolean
      * */
+    @SuppressWarnings("unused")
     public boolean canGetLocation() {
         return this.canGetLocation;
     }
@@ -156,6 +156,7 @@ public class GPSTracker extends Service implements LocationListener {
      * Function to show settings alert dialog On pressing Settings button will
      * launch Settings Options
      * */
+    @SuppressWarnings("unused")
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 
@@ -215,6 +216,7 @@ public class GPSTracker extends Service implements LocationListener {
         return null;
     }
 
+    @SuppressWarnings("unused")
     public float getAccuracy()
     {
         return location.getAccuracy();

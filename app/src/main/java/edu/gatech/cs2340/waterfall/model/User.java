@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class User implements Parcelable {
     //Getters and setters for user class
 
@@ -78,8 +79,8 @@ public class User implements Parcelable {
 
     //instance variables
     String name;
-    String uid;
-    String email;
+    final String uid;
+    final String email;
     //private String type = "user";
     int zipcode;
     String phoneNumber;
@@ -147,18 +148,4 @@ public class User implements Parcelable {
         DatabaseReference mUserDatabase = WelcomeActivity.getUserDatabase();
         mUserDatabase.child(uid).removeValue();
     }
-
-    /**
-     * Allow the user to submit a water report
-     */
-//     public void submitReport() {
-//         //TODO
-//     }
-
-    /**
-     * View water sources in your area
-     */
-//     public void viewSources() {
-//         //TODO
-//     }
 }
