@@ -36,7 +36,7 @@ public class GraphActivity extends AppCompatActivity {
         locSpinner = (Spinner) findViewById(R.id.locSpinner);
         ySpinner = (Spinner) findViewById(R.id.yearSpinner);
         final Set<String> locations = new HashSet<>();
-        final DatabaseReference ref = WelcomeActivity.getmPurityReportDatabase();
+        final DatabaseReference ref = WelcomeActivity.getPurityReportDatabase();
         Log.d("BEFORE", "SUCCESS");
         readData(ref, new OnGetDataListener() {
             @Override
@@ -48,10 +48,13 @@ public class GraphActivity extends AppCompatActivity {
                     lat = (Math.round(lat * 100.0)) / 100.0;
                     double[] loc = {lang, lat};
                     locations.add(Arrays.toString(loc));
+<<<<<<< HEAD
+=======
+                    Log.d("LOCATION", loc.toString());
+>>>>>>> 7a3c6ae089d9be052ed19e1172af31c93ae6fd4b
                 }
                 List<String> locList = new ArrayList<>(locations);
                 locSpinner.setAdapter(new ArrayAdapter<>(GraphActivity.this, android.R.layout.simple_spinner_item, locList));
-                Log.d("LOCLISTSIZE", locList.size()+"");
                 List<Integer> yList = new ArrayList<>();
                 yList.add(2016);
                 yList.add(2017);
@@ -76,7 +79,7 @@ public class GraphActivity extends AppCompatActivity {
 
     /**
      * read the data from the database
-     * @param ref to the dtabase
+     * @param ref to the database
      * @param listener the data listener
      */
     private void readData(DatabaseReference ref, final OnGetDataListener listener) {
@@ -102,7 +105,6 @@ public class GraphActivity extends AppCompatActivity {
         final String wantedLoc = (String) locSpinner.getSelectedItem();
         boolean k = wantedLoc == null;
         String m = k? "true": "false";
-        Log.d("WANTEDBEFORE", m);
         Spinner ySpinner = (Spinner) findViewById(R.id.yearSpinner);
         final int wantedYear = (int) ySpinner.getSelectedItem();
         readData(ref, new OnGetDataListener() {
@@ -119,14 +121,12 @@ public class GraphActivity extends AppCompatActivity {
                     double lat = report.child("location").child("latitude").getValue(Double.class);
                     lat = (Math.round(lat * 100.0)) / 100.0;
                     double[] loc = {lang, lat};
-                    Log.d("CURRRR", Arrays.toString(loc));
                     boolean k = wantedLoc == null;
                     String m = k? "true": "false";
                     Log.d("WANTED", m);
                     if (Arrays.toString(loc).equals(wantedLoc)) {
                         int year = report.child("dateAndTime").child("year").getValue(Integer.class);
                         if (year == (wantedYear - 1900)) {
-                            Log.d("THISSS", wantedYear + "");
                             int month = report.child("dateAndTime").child("month").getValue(Integer.class);
                             int virus = report.child("virus").getValue(Integer.class);
                             int cont = report.child("containment").getValue(Integer.class);
@@ -174,7 +174,7 @@ public class GraphActivity extends AppCompatActivity {
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-        final DatabaseReference ref = WelcomeActivity.getmPurityReportDatabase();
+        final DatabaseReference ref = WelcomeActivity.getPurityReportDatabase();
         GraphView graph = (GraphView) findViewById(R.id.graph);
         // Check which radio button was clicked
         switch(view.getId()) {
@@ -184,7 +184,6 @@ public class GraphActivity extends AppCompatActivity {
                     break;
             case R.id.cunt_btn:
                 if (checked)
-                    Log.d("CHANGEEEEEEEEEEEEEEEEE", "CUNTT");
                     populateGraphView(ref, graph, 1);
                     // Ninjas rule
                     break;

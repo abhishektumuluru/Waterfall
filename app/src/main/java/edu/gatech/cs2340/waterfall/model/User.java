@@ -131,7 +131,7 @@ public class User implements Parcelable {
      * Write the user's details to the database
      */
     public void writeToDatabase(String type) {
-        DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
+        DatabaseReference mUserDatabase = WelcomeActivity.getUserDatabase();
         mUserDatabase.child(uid).child("name").setValue(name);
         mUserDatabase.child(uid).child("email").setValue(email);
         mUserDatabase.child(uid).child("zipcode").setValue(zipcode);
@@ -144,7 +144,7 @@ public class User implements Parcelable {
      * Delete the user from the database
      */
     public void deleteFromDatabase() {
-        DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
+        DatabaseReference mUserDatabase = WelcomeActivity.getUserDatabase();
         mUserDatabase.child(uid).removeValue();
     }
 

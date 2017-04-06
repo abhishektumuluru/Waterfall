@@ -53,23 +53,23 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     * getter method for userdatabase
+     * getter method for user database
      */
-    public static DatabaseReference getmUserDatabase() {
+    public static DatabaseReference getUserDatabase() {
         return mUserDatabase;
     }
 
     /**
      * getter method for source report database
      */
-    public static DatabaseReference getmSourceReportDatabase() {
+    public static DatabaseReference getSourceReportDatabase() {
         return mSourceReportDatabase;
     }
 
     /**
      * getter method for purity report database
      */
-    public static DatabaseReference getmPurityReportDatabase() {
+    public static DatabaseReference getPurityReportDatabase() {
         return mPurityReportDatabase;
     }
 
@@ -86,7 +86,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param view the current view
      * Open a login screen for the user
      *  If the user is already signed, then open the main activity
-     *  Otherwise, open the firebase login
+     *  Otherwise, open the fire base login
      */
     public void openLoginScreen(View view) {
         auth = FirebaseAuth.getInstance();
@@ -100,7 +100,7 @@ public class WelcomeActivity extends AppCompatActivity {
             DatabaseReference ref = mUserDatabase.child(uid);
             setUser(ref);
         } else {
-            //open firebase login if current user is null i.e. not signed in
+            //open fire base login if current user is null i.e. not signed in
             startActivityForResult(AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
@@ -135,7 +135,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     * set the current user in the model after retrieving from firebase
+     * set the current user in the model after retrieving from fire base
      * @param ref reference to the database
      */
     private void setUser(DatabaseReference ref) {
@@ -146,7 +146,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 type = dataSnapshot.child("type").getValue(String.class);
                 name = dataSnapshot.child("name").getValue(String.class);
-                Log.d("ONDATACHANGE", type + " " + name);
                 zip = dataSnapshot.child("zipcode").getValue(int.class);
                 phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
                 Intent intent = null;
@@ -168,7 +167,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
             @Override
             public void onStart() {
-                Log.d("ONSTART", "Started");
+                Log.d("On Start", "Started");
             }
 
             @Override
@@ -193,7 +192,6 @@ public class WelcomeActivity extends AppCompatActivity {
             if (resultCode == ResultCodes.OK) {
                 String uniqueId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                //final String displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 final DatabaseReference UserRef = mUserDatabase.child(uniqueId);
                 UserRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

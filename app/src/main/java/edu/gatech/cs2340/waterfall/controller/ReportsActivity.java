@@ -16,15 +16,15 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.waterfall.R;
 
-public class PurityReportsActivity extends AppCompatActivity {
+public class ReportsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_purity_reports);
+        setContentView(R.layout.activity_reports);
 
-        ListView reports = (ListView) findViewById(R.id.p_reports_listView);
-        DatabaseReference ref = WelcomeActivity.getPurityReportDatabase();
+        ListView reports = (ListView) findViewById(R.id.reports_listView);
+        DatabaseReference ref = WelcomeActivity.getSourceReportDatabase();
         populateListView(ref, reports);
 
     }
@@ -34,16 +34,15 @@ public class PurityReportsActivity extends AppCompatActivity {
      * @param ref the reference to the database
      * @param reports the reports
      */
-    private void populateListView(DatabaseReference ref, final ListView reports) {
+    public void populateListView(DatabaseReference ref, final ListView reports) {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                ArrayList<String> reportList = new ArrayList<>();
-                reportList.add("Condition  Virus Containment  Long  Lat  Date Time");
+                ArrayList<String> reportList = new ArrayList<String>();
+                reportList.add("Condition  Type  Long  Lat  Date Time");
                 for (DataSnapshot report: dataSnapshot.getChildren()) {
-                    String condition = report.child("overallCondition").getValue(String.class);
-                    int virus = report.child("virus").getValue(int.class);
-                    int containment = report.child("containment").getValue(int.class);
+                    String condition = report.child("condition").getValue(String.class);
+                    String type = report.child("type").getValue(String.class);
                     int date = report.child("dateAndTime").child("date").getValue(int.class);
                     int month = report.child("dateAndTime").child("month").getValue(int.class);
                     int hours = report.child("dateAndTime").child("hours").getValue(int.class);
@@ -52,10 +51,10 @@ public class PurityReportsActivity extends AppCompatActivity {
                     lat = (Math.round(lat * 100.0)) / 100.0;
                     Double longitude = report.child("location").child("longitude").getValue(Double.class);
                     longitude = (Math.round(longitude * 100.0)) / 100.0;
-                    String toPrint = condition + " " + virus + "  " + containment + " " + longitude + " " + lat + "  " + month + "/" + date + "  " + hours + ":" + minutes;
+                    String toPrint = condition + " " + type + "  " + longitude + " " + lat + "  " + month + "/" + date + "  " + hours + ":" + minutes;
                     reportList.add(toPrint);
                 }
-                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<>(PurityReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
+                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<String>(ReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
                 reports.setAdapter(reportsAdapter);
             }
 
@@ -76,7 +75,7 @@ public class PurityReportsActivity extends AppCompatActivity {
      * @param ref to the data base
      * @param listener the data listener
      */
-    private void readData(DatabaseReference ref, final OnGetDataListener listener) {
+    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -98,7 +97,7 @@ public class PurityReportsActivity extends AppCompatActivity {
      */
     public void openReportFillPage(View view) {
 
-        Intent intent = new Intent(this, FillPurityReportActivity.class);
+        Intent intent = new Intent(this, FillSourceReportActivity.class);
         startActivity(intent);
     }
 

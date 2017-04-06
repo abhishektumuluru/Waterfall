@@ -25,8 +25,8 @@
         android:text="Virus Level"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="266dp"
-        android:layout_below="@+id/OCspinner"
-        android:layout_alignStart="@+id/OCspinner"
+        android:layout_below="@+id/overallConditionSpinner"
+        android:layout_alignStart="@+id/overallConditionSpinner"
         android:layout_marginTop="37dp"
         android:labelFor="@+id/virusLevel"/>
 
@@ -43,7 +43,7 @@
         android:layout_marginTop="18dp" />
 
     <Spinner
-        android:id="@+id/OCspinner"
+        android:id="@+id/overallConditionSpinner"
         android:layout_width="333dp"
         android:layout_height="29dp"
         tools:layout_editor_absoluteX="16dp"

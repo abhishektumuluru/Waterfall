@@ -3,14 +3,14 @@ package edu.gatech.cs2340.waterfall.controller;
 import com.google.firebase.database.DataSnapshot;
 
 /**
- * Created by Mohit Chauhan on 3/6/2017.
+ * Created by Mo on 3/6/2017.
  */
 
 interface OnGetDataListener {
 
     /**
      * define what happens on success
-     * @param dataSnapshot snapshaot of the data
+     * @param dataSnapshot snapshot of the data
      */
     void onSuccess(DataSnapshot dataSnapshot);
 
@@ -20,7 +20,7 @@ interface OnGetDataListener {
     void onStart();
 
     /**
-     * define what happnes of failure of retrieving data
+     * define what happens of failure of retrieving data
      */
     void onFailure();
 }

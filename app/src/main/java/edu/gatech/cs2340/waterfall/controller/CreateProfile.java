@@ -15,8 +15,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.gatech.cs2340.waterfall.R;
+<<<<<<< HEAD
 //Create profile activr
 @SuppressWarnings("ConstantConditions")
+=======
+//Create profile activity
+>>>>>>> 7a3c6ae089d9be052ed19e1172af31c93ae6fd4b
 public class CreateProfile extends AppCompatActivity {
     //instance variables
     private List<String> modes;

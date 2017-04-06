@@ -8,7 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
 /**
- * Created by seanrsain on 3/6/17.
+ * Created by Sean on 3/6/17.
  */
 
 public class SourceReport extends Report{
@@ -52,7 +52,7 @@ public class SourceReport extends Report{
 
     @Override
     public void writeToDatabase() {
-        DatabaseReference mReportDatabase = WelcomeActivity.getmSourceReportDatabase();
+        DatabaseReference mReportDatabase = WelcomeActivity.getSourceReportDatabase();
         mReportDatabase.child(getReportNo()).child("dateAndTime").setValue(getDate());
         mReportDatabase.child(getReportNo()).child("reporterName").setValue(getUserName());
         mReportDatabase.child(getReportNo()).child("location").setValue(getLocation());
