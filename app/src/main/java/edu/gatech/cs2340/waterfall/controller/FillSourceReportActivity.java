@@ -31,8 +31,8 @@ public class FillSourceReportActivity extends AppCompatActivity {
         wtSpinner = (Spinner) findViewById(R.id.wtSpinner);
         wcSpinner = (Spinner) findViewById(R.id.wcSpinner);
 
-        wtSpinner.setAdapter(new ArrayAdapter<waterType>(this, android.R.layout.simple_spinner_item, waterType.values()));
-        wcSpinner.setAdapter(new ArrayAdapter<waterCondition>(this, android.R.layout.simple_spinner_item, waterCondition.values()));
+        wtSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, waterType.values()));
+        wcSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, waterCondition.values()));
 
 
     }

@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.waterfall.controller;
 
-import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +16,6 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.BarGraphSeries;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,8 +26,8 @@ import java.util.Set;
 import edu.gatech.cs2340.waterfall.R;
 
 public class GraphActivity extends AppCompatActivity {
-    Spinner locSpinner;
-    Spinner ySpinner;
+    private Spinner locSpinner;
+    private Spinner ySpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +50,11 @@ public class GraphActivity extends AppCompatActivity {
                     Log.d("LOCATION", loc.toString());
                 }
                 List<String> locList = new ArrayList<>(locations);
-                locSpinner.setAdapter(new ArrayAdapter<String>(GraphActivity.this, android.R.layout.simple_spinner_item, locList));
+                locSpinner.setAdapter(new ArrayAdapter<>(GraphActivity.this, android.R.layout.simple_spinner_item, locList));
                 List<Integer> yList = new ArrayList<>();
                 yList.add(2016);
                 yList.add(2017);
-                ySpinner.setAdapter(new ArrayAdapter<Integer>(GraphActivity.this, android.R.layout.simple_spinner_item, yList));
+                ySpinner.setAdapter(new ArrayAdapter<>(GraphActivity.this, android.R.layout.simple_spinner_item, yList));
                 ySpinner.setSelection(1);
                 locSpinner.setSelection(0);
                 GraphView graph = (GraphView) findViewById(R.id.graph);
@@ -80,7 +78,7 @@ public class GraphActivity extends AppCompatActivity {
      * @param ref to the database
      * @param listener the data listener
      */
-    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
+    private void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -110,7 +108,7 @@ public class GraphActivity extends AppCompatActivity {
             public void onSuccess(DataSnapshot dataSnapshot) {
                 ArrayList<Integer>[] data = new ArrayList[12];
                 for (int i = 0; i < 12; i++) {
-                    data[i] = new ArrayList<Integer>();
+                    data[i] = new ArrayList<>();
                 }
                 for (DataSnapshot report: dataSnapshot.getChildren()) {
                     double lang = report.child("location").child("longitude").getValue(Double.class);

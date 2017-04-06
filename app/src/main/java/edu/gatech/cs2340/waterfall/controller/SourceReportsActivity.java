@@ -34,11 +34,11 @@ public class SourceReportsActivity extends AppCompatActivity {
      * @param ref the reference to the database
      * @param reports the reports
      */
-    public void populateListView(DatabaseReference ref, final ListView reports) {
+    private void populateListView(DatabaseReference ref, final ListView reports) {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                ArrayList<String> reportList = new ArrayList<String>();
+                ArrayList<String> reportList = new ArrayList<>();
                 reportList.add("Condition  Type  Long  Lat  Date Time");
                 for (DataSnapshot report: dataSnapshot.getChildren()) {
                     String condition = report.child("condition").getValue(String.class);
@@ -54,7 +54,7 @@ public class SourceReportsActivity extends AppCompatActivity {
                     String toPrint = condition + " " + type + "  " + longitude + " " + lat + "  " + month + "/" + date + "  " + hours + ":" + minutes;
                     reportList.add(toPrint);
                 }
-                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<String>(SourceReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
+                ArrayAdapter<String> reportsAdapter = new ArrayAdapter<>(SourceReportsActivity.this, android.R.layout.simple_list_item_1,reportList);
                 reports.setAdapter(reportsAdapter);
             }
 
@@ -75,7 +75,7 @@ public class SourceReportsActivity extends AppCompatActivity {
      * @param ref to the data base
      * @param listener the data listener
      */
-    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
+    private void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

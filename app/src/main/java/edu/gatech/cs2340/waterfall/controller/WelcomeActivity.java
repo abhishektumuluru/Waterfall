@@ -17,7 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
@@ -28,12 +27,9 @@ import edu.gatech.cs2340.waterfall.model.Manager;
 import edu.gatech.cs2340.waterfall.model.Model;
 import edu.gatech.cs2340.waterfall.model.User;
 import edu.gatech.cs2340.waterfall.model.Worker;
-import retrofit2.http.HEAD;
 
-import static android.R.attr.data;
-import static android.R.attr.dateTextAppearance;
-import static android.R.attr.type;
 
+@SuppressWarnings("ALL")
 public class WelcomeActivity extends AppCompatActivity {
 
     private static FirebaseAuth auth;
@@ -122,7 +118,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * @param listener an instance of the get data listener
      * check if we can read data
      */
-    public void readData(DatabaseReference ref, final OnGetDataListener listener) {
+    private void readData(DatabaseReference ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -142,7 +138,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * set the current user in the model after retrieving from fire base
      * @param ref reference to the database
      */
-    public void setUser(DatabaseReference ref) {
+    private void setUser(DatabaseReference ref) {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {

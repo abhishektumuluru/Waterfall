@@ -19,7 +19,7 @@ public abstract class Report implements Parcelable{
      *
      * @return the location
      */
-    public Location getLocation() {
+    Location getLocation() {
         return location;
     }
 
@@ -35,7 +35,7 @@ public abstract class Report implements Parcelable{
      *
      * @return the user
      */
-    public User getUser() {
+    User getUser() {
         return user;
     }
 
@@ -51,7 +51,7 @@ public abstract class Report implements Parcelable{
      *
      * @return the username
      */
-    public String getUserName() {
+    String getUserName() {
         return userName;
     }
 
@@ -63,7 +63,7 @@ public abstract class Report implements Parcelable{
      *
      * @return the report No
      */
-    public String getReportNo() {
+    String getReportNo() {
         return reportNo;
     }
 
@@ -79,7 +79,7 @@ public abstract class Report implements Parcelable{
      *
      * @return the date
      */
-    public Date getDate() {
+    Date getDate() {
         return date;
     }
 
@@ -122,7 +122,7 @@ public abstract class Report implements Parcelable{
      * @param user that wants to submit a report
      * @param location that he is submitting report from
      */
-    public Report(User user, Location location){
+    Report(User user, Location location){
         this.date = new Date();
         Random random = new Random();
         reportCounts = random.nextInt(30000);

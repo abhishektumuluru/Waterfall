@@ -4,14 +4,6 @@ package edu.gatech.cs2340.waterfall.model;
  * Created by Sean on 2/21/17.
  */
 
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.compat.BuildConfig;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-
-import java.util.ArrayList;
-import java.util.List;
-
 //Singleton Model class to save the current user locally
 
 public class Model {

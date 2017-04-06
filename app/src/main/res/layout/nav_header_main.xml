@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:srcCompat="@android:drawable/sym_def_app_icon"
-        tools:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait" />
+        tools:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"
+        android:contentDescription="Facebook Profile Picture"/>
 
     <TextView
         android:layout_width="match_parent"

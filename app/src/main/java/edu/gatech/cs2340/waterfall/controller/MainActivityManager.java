@@ -28,7 +28,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.waterfall.R;
 import edu.gatech.cs2340.waterfall.model.Model;
-import edu.gatech.cs2340.waterfall.model.SourceReport;
 
 public class MainActivityManager extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -132,7 +131,7 @@ public class MainActivityManager extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.view_water_sources) {
-            Intent intent = new Intent(this, ReportsActivity.class);
+            Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.add_water_report) {

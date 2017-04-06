@@ -2,12 +2,8 @@ package edu.gatech.cs2340.waterfall.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.provider.ContactsContract;
-import android.support.v4.view.ViewCompat;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
@@ -81,12 +77,12 @@ public class User implements Parcelable {
 
 
     //instance variables
-    private String name;
-    private String uid;
-    private String email;
+    String name;
+    String uid;
+    String email;
     //private String type = "user";
-    private int zipcode;
-    private String phoneNumber;
+    int zipcode;
+    String phoneNumber;
     //Constructor
     public User(String uid, String name, String email, int zipcode, String phoneNumber) {
         this.name = name;

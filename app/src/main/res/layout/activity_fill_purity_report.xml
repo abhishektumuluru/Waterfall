@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.gatech.cs2340.waterfall.controller.FillReportActivity">
+    tools:context="edu.gatech.cs2340.waterfall.controller.FillPurityReportActivity">
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Containment Level"
+        android:text="Contaminant Level"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="345dp"
         android:layout_below="@+id/virusLevel"
         android:layout_alignStart="@+id/virusLevel"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="13dp"
+        android:labelFor="@+id/containmentLevel"/>
 
     <TextView
         android:id="@+id/textView8"
@@ -26,7 +27,8 @@
         tools:layout_editor_absoluteY="266dp"
         android:layout_below="@+id/overallConditionSpinner"
         android:layout_alignStart="@+id/overallConditionSpinner"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="37dp"
+        android:labelFor="@+id/virusLevel"/>
 
     <EditText
         android:id="@+id/virusLevel"
