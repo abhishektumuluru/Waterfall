@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.gatech.cs2340.waterfall.R;
-//Create profile activr
+//Create profile activity
 public class CreateProfile extends AppCompatActivity {
     //instance variables
     private List<String> modes;

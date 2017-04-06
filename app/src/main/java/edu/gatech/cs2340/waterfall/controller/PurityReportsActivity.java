@@ -23,18 +23,18 @@ public class PurityReportsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purity_reports);
 
-        ListView reports = (ListView) findViewById(R.id.p_reports_listview);
-        DatabaseReference ref = WelcomeActivity.getmPurityReportDatabase();
-        populateListview(ref, reports);
+        ListView reports = (ListView) findViewById(R.id.p_reports_listView);
+        DatabaseReference ref = WelcomeActivity.getPurityReportDatabase();
+        populateListView(ref, reports);
 
     }
 
     /**
-     * populate the listview in the reports activity
+     * populate the list view in the reports activity
      * @param ref the reference to the database
      * @param reports the reports
      */
-    public void populateListview(DatabaseReference ref, final ListView reports) {
+    public void populateListView(DatabaseReference ref, final ListView reports) {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
@@ -73,7 +73,7 @@ public class PurityReportsActivity extends AppCompatActivity {
 
     /**
      * read the data from the database
-     * @param ref to the dtabase
+     * @param ref to the data base
      * @param listener the data listener
      */
     public void readData(DatabaseReference ref, final OnGetDataListener listener) {

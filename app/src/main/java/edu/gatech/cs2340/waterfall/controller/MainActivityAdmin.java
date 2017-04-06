@@ -59,9 +59,9 @@ public class MainActivityAdmin extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Model model = Model.getInstance();
-        View nameemail = navigationView.getHeaderView(0);
-        TextView nameText = (TextView) nameemail.findViewById(R.id.headerName);
-        TextView emailText = (TextView) nameemail.findViewById(R.id.headerEmail);
+        View nameEmail = navigationView.getHeaderView(0);
+        TextView nameText = (TextView) nameEmail.findViewById(R.id.headerName);
+        TextView emailText = (TextView) nameEmail.findViewById(R.id.headerEmail);
         if (model.getInstance().getCurrentUser() != null) {
             String name = Model.getInstance().getCurrentUser().getName();
             nameText.setText(name);
@@ -148,7 +148,7 @@ public class MainActivityAdmin extends AppCompatActivity
             Intent.createChooser(send,"Share with");
             startActivity(send);
 
-        } else if (id == R.id.nav_editprof) {
+        } else if (id == R.id.nav_editProf) {
             Intent intent = new Intent(this, CreateProfile.class);
             intent.putExtra("isEdit", true);
             startActivity(intent);

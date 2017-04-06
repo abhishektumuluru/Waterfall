@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.waterfall.model;
 
 /**
- * Created by seanrsain on 2/21/17.
+ * Created by Sean on 2/21/17.
  */
 
 import android.os.Parcelable;

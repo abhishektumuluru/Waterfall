@@ -11,7 +11,7 @@
     tools:context="edu.gatech.cs2340.waterfall.controller.ReportsActivity">
 
     <ListView
-        android:id="@+id/s_reports_listview"
+        android:id="@+id/s_reports_listView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_alignParentTop="true" />

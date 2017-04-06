@@ -28,7 +28,7 @@ public class FillPurityReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_purity_report);
 
-        ocSpinner = (Spinner) findViewById(R.id.OCspinner);
+        ocSpinner = (Spinner) findViewById(R.id.overallConditionSpinner);
 
         virusLevel = (EditText) findViewById(R.id.virusLevel);
         containmentLevel = (EditText) findViewById(R.id.containmentLevel);
@@ -41,8 +41,8 @@ public class FillPurityReportActivity extends AppCompatActivity {
 
     /**
      *
-     * @param view the fill reprot view where asks for source report info
-     * Submit the information collected and go back to the reports acticity
+     * @param view the fill report view where asks for source report info
+     * Submit the information collected and go back to the reports activity
      *
      */
     public void submit(View view) {

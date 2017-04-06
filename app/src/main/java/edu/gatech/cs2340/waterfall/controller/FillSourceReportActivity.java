@@ -39,8 +39,8 @@ public class FillSourceReportActivity extends AppCompatActivity {
 
     /**
      *
-     * @param view the fill reprot view where asks for source report info
-     * Submit the information collected and go back to the reports acticity
+     * @param view the fill report view where asks for source report info
+     * Submit the information collected and go back to the reports activity
      *
      */
     public void submit(View view) {

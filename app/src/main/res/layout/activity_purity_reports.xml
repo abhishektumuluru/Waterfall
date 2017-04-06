@@ -8,10 +8,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.gatech.cs2340.waterfall.controller.ReporstsActivity">
+    tools:context="edu.gatech.cs2340.waterfall.controller.ReportsActivity">
 
     <ListView
-        android:id="@+id/p_reports_listview"
+        android:id="@+id/p_reports_listView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_alignParentTop="true" />

@@ -23,18 +23,18 @@ public class ReportsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports);
 
-        ListView reports = (ListView) findViewById(R.id.reports_listview);
-        DatabaseReference ref = WelcomeActivity.getmSourceReportDatabase();
-        populateListview(ref, reports);
+        ListView reports = (ListView) findViewById(R.id.reports_listView);
+        DatabaseReference ref = WelcomeActivity.getSourceReportDatabase();
+        populateListView(ref, reports);
 
     }
 
     /**
-     * populate the listview in the reports activity
+     * populate the list view in the reports activity
      * @param ref the reference to the database
      * @param reports the reports
      */
-    public void populateListview(DatabaseReference ref, final ListView reports) {
+    public void populateListView(DatabaseReference ref, final ListView reports) {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
@@ -72,7 +72,7 @@ public class ReportsActivity extends AppCompatActivity {
 
     /**
      * read the data from the database
-     * @param ref to the dtabase
+     * @param ref to the data base
      * @param listener the data listener
      */
     public void readData(DatabaseReference ref, final OnGetDataListener listener) {
