@@ -16,6 +16,7 @@ import java.util.List;
 
 import edu.gatech.cs2340.waterfall.R;
 //Create profile activr
+@SuppressWarnings("ConstantConditions")
 public class CreateProfile extends AppCompatActivity {
     //instance variables
     private List<String> modes;
@@ -25,11 +26,10 @@ public class CreateProfile extends AppCompatActivity {
     private String uid;
     private EditText phone;
     private EditText zip;
-    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        auth = WelcomeActivity.getAuth();
+        FirebaseAuth auth = WelcomeActivity.getAuth();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);

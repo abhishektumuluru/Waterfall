@@ -46,7 +46,6 @@ public class FillPurityReportActivity extends AppCompatActivity {
      *
      */
     public void submit(View view) {
-        final Model model = Model.getInstance();
         overallCondition oc = (overallCondition) ocSpinner.getSelectedItem();
 
 
@@ -73,7 +72,7 @@ public class FillPurityReportActivity extends AppCompatActivity {
      * @param v the view
      * if the user cancels adding the water report
      */
-    protected void cancel(View v) {
+    public void cancel(View v) {
         Intent i = getIntent();
         Intent intent;
         if (i.hasExtra("Worker")) {

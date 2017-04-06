@@ -44,7 +44,6 @@ public class FillSourceReportActivity extends AppCompatActivity {
      *
      */
     public void submit(View view) {
-        final Model model = Model.getInstance();
         waterType wt = (waterType) wtSpinner.getSelectedItem();
         waterCondition wc = (waterCondition) wcSpinner.getSelectedItem();
 

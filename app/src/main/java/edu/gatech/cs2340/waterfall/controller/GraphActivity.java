@@ -25,6 +25,7 @@ import java.util.Set;
 
 import edu.gatech.cs2340.waterfall.R;
 
+@SuppressWarnings("unchecked")
 public class GraphActivity extends AppCompatActivity {
     private Spinner locSpinner;
     private Spinner ySpinner;
@@ -47,7 +48,6 @@ public class GraphActivity extends AppCompatActivity {
                     lat = (Math.round(lat * 100.0)) / 100.0;
                     double[] loc = {lang, lat};
                     locations.add(Arrays.toString(loc));
-                    Log.d("LOCATIONNN", loc.toString());
                 }
                 List<String> locList = new ArrayList<>(locations);
                 locSpinner.setAdapter(new ArrayAdapter<>(GraphActivity.this, android.R.layout.simple_spinner_item, locList));
@@ -108,7 +108,8 @@ public class GraphActivity extends AppCompatActivity {
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                ArrayList<Integer>[] data = new ArrayList[12];
+
+                List<Integer>[] data = new ArrayList[12];
                 for (int i = 0; i < 12; i++) {
                     data[i] = new ArrayList<>();
                 }

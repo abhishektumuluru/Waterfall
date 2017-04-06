@@ -34,6 +34,7 @@ public class MainActivityAdmin extends AppCompatActivity
 
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 2;
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,7 +125,7 @@ public class MainActivityAdmin extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     //Navigation drawer options
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -154,7 +155,7 @@ public class MainActivityAdmin extends AppCompatActivity
             startActivity(intent);
             //log out and return to the welcome activity when sign out is clicked
         } else if (id == R.id.nav_logout) {
-            FirebaseAuth auth = WelcomeActivity.getAuth();
+
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

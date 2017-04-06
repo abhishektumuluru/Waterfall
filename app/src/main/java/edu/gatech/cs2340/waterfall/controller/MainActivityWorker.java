@@ -53,6 +53,7 @@ public class MainActivityWorker extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //noinspection deprecation
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -124,7 +125,7 @@ public class MainActivityWorker extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     //Navigation drawer options
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -154,7 +155,6 @@ public class MainActivityWorker extends AppCompatActivity
             startActivity(intent);
             //log out and return to the welcome activity when sign out is clicked
         } else if (id == R.id.nav_logout) {
-            FirebaseAuth auth = WelcomeActivity.getAuth();
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -113,7 +113,6 @@ public abstract class Report implements Parcelable{
     private String uid;
     private String userName;
     private String reportNo;
-    private static int reportCounts;
     private Date date;
 
 
@@ -125,7 +124,7 @@ public abstract class Report implements Parcelable{
     Report(User user, Location location){
         this.date = new Date();
         Random random = new Random();
-        reportCounts = random.nextInt(30000);
+        int reportCounts = random.nextInt(30000);
         this.user = user;
         this.location = location;
         this.userName = user.getName();

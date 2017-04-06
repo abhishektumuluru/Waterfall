@@ -4,28 +4,27 @@ package edu.gatech.cs2340.waterfall.controller;
  * Created by AbhishekTumuluru on 3/7/2017.
  */
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
+@SuppressWarnings("UnusedAssignment")
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
-
-    // flag for GPS status
-    private boolean isGPSEnabled = false;
-
-    // flag for network status
-    private boolean isNetworkEnabled = false;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 2;
 
     // flag for GPS status
     private boolean canGetLocation = false;
@@ -58,17 +57,16 @@ public class GPSTracker extends Service implements LocationListener {
                     .getSystemService(LOCATION_SERVICE);
 
             // getting GPS status
-            isGPSEnabled = locationManager
+            boolean isGPSEnabled = locationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
 
             // getting network status
-            isNetworkEnabled = locationManager
+            boolean isNetworkEnabled = locationManager
                     .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
 
-            if (!isGPSEnabled && !isNetworkEnabled) {
-                // no network provider is enabled
-            } else {
+            if (isGPSEnabled || isNetworkEnabled) {
+                //provider is enabled
                 this.canGetLocation = true;
                 if (isNetworkEnabled) {
                     locationManager.requestLocationUpdates(

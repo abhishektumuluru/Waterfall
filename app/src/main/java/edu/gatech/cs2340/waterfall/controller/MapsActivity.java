@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.waterfall.controller;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -20,6 +23,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private DatabaseReference ref;
     private LatLng loc;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         readData(ref, new OnGetDataListener() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                for (DataSnapshot report: dataSnapshot.getChildren()) {
+                for (DataSnapshot report : dataSnapshot.getChildren()) {
                     loc = new LatLng(report.child("location").child("latitude").getValue(Double.class), report.child("location").child("longitude").getValue(Double.class));
                     int date = report.child("dateAndTime").child("date").getValue(int.class);
                     int month = report.child("dateAndTime").child("month").getValue(int.class);
@@ -59,6 +63,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     int hour = report.child("dateAndTime").child("hours").getValue(int.class);
                     int minutes = report.child("dateAndTime").child("minutes").getValue(int.class);
                     mMap.addMarker(new MarkerOptions().position(loc).title(hour + ":" + minutes + "   " + date + "/" + month + "   " + condition + "   " + type));
+                }
+                if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(MapsActivity.this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_LOCATION);
                 }
                 mMap.setMyLocationEnabled(true);
             }
@@ -73,7 +82,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng());
     }
 
     /**
