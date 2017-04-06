@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.CreateProfile" />
-        <activity android:name=".controller.ReportsActivity" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
