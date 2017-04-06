@@ -24,7 +24,7 @@ public class Administrator extends User{
      * Delete an account from the database
      */
     public void deleteAccount() {
-        DatabaseReference mUserDatabase = WelcomeActivity.getmUserDatabase();
+        DatabaseReference mUserDatabase = WelcomeActivity.getUserDatabase();
         mUserDatabase.child(uid).removeValue();
     }
 
