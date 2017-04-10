@@ -134,6 +134,24 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    public Intent determineUser(String type, String uniqueId, String name, String email, int zip, String phoneNumber) {
+        Intent intent = null;
+        if (type.equals("user")) {
+            Model.getInstance().setCurrentUser(new User(uniqueId, name, email, zip, phoneNumber));
+            intent = new Intent(WelcomeActivity.this, MainActivityUser.class);
+        } else if (type.equals("worker")) {
+            Model.getInstance().setCurrentUser(new Worker(uniqueId, name, email, zip, phoneNumber));
+            intent = new Intent(WelcomeActivity.this, MainActivityWorker.class);
+        } else if (type.equals("manager")) {
+            Model.getInstance().setCurrentUser(new Manager(uniqueId, name, email, zip, phoneNumber));
+            intent = new Intent(WelcomeActivity.this, MainActivityManager.class);
+        } else if (type.equals("admin")) {
+            Model.getInstance().setCurrentUser(new Administrator(uniqueId, name, email, zip, phoneNumber));
+            intent = new Intent(WelcomeActivity.this, MainActivityAdmin.class);
+        }
+        //Log.d("INTENNTTT", intent.getComponent().getClassName());
+        return intent;
+    }
     /**
      * set the current user in the model after retrieving from fire base
      * @param ref reference to the database
@@ -148,20 +166,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 name = dataSnapshot.child("name").getValue(String.class);
                 zip = dataSnapshot.child("zipcode").getValue(int.class);
                 phoneNumber = dataSnapshot.child("phone number").getValue(String.class);
-                Intent intent = null;
-                if (type.equals("user")) {
-                    Model.getInstance().setCurrentUser(new User(uniqueId, name, email, zip, phoneNumber));
-                    intent = new Intent(WelcomeActivity.this, MainActivityUser.class);
-                } else if (type.equals("worker")) {
-                    Model.getInstance().setCurrentUser(new Worker(uniqueId, name, email, zip, phoneNumber));
-                    intent = new Intent(WelcomeActivity.this, MainActivityWorker.class);
-                } else if (type.equals("manager")) {
-                    Model.getInstance().setCurrentUser(new Manager(uniqueId, name, email, zip, phoneNumber));
-                    intent = new Intent(WelcomeActivity.this, MainActivityManager.class);
-                } else if (type.equals("admin")) {
-                    Model.getInstance().setCurrentUser(new Administrator(uniqueId, name, email, zip, phoneNumber));
-                    intent = new Intent(WelcomeActivity.this, MainActivityAdmin.class);
-                }
+                Intent intent = determineUser(type, uniqueId, name, email, zip, phoneNumber);
                 startActivity(intent);
             }
 

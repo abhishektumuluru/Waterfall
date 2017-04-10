@@ -148,4 +148,19 @@ public class User implements Parcelable {
         DatabaseReference mUserDatabase = WelcomeActivity.getUserDatabase();
         mUserDatabase.child(uid).removeValue();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (o == this) {
+            return true;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        User check = (User) o;
+        return (check.getUid().equals(uid));
+    }
 }
