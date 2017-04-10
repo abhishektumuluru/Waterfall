@@ -2,6 +2,8 @@ package edu.gatech.cs2340.waterfall;
 
 import org.junit.Test;
 
+import edu.gatech.cs2340.waterfall.model.Model;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,4 +16,11 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void ModelTest() throws Exception {
+        assertNotNull(Model.getInstance());
+    }
+
+
 }
