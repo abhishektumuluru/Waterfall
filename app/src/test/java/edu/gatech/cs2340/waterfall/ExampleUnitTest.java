@@ -17,10 +17,23 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
+
+    // Reshav Sain
     @Test
     public void ModelTest() throws Exception {
         assertNotNull(Model.getInstance());
     }
 
+
+    // Mohit Chauhan
+
+
+    // Mehul
+
+
+    // Abhishek Tumuluru
+
+
+    // Vivek Raja
 
 }
