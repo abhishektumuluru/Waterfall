@@ -82,7 +82,7 @@ public class SourceReport extends Report{
         SourceReport check = (SourceReport) o;
         
         //field comparison
-        return ((check.getUid().equals(getUid())) && (check.getDate().equals(getDate())));
+        return ((check.getWaterCondition().equals(getWaterCondition())) && (check.getWaterType().equals(getWaterType())));
     }
 
     @Override
