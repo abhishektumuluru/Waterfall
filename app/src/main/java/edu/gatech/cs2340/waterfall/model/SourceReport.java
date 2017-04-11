@@ -63,6 +63,27 @@ public class SourceReport extends Report{
     public int describeContents() {
         return 0;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        //null check
+        if (o == null) {
+            return false;
+        }
+        //self-check
+        if (o == this) {
+            return true;
+        }
+        //type check
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        //type cast
+        SourceReport check = (SourceReport) o;
+        
+        //field comparison
+        return ((check.getUid().equals(getUid())) && (check.getDate().equals(getDate())));
+    }
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
