@@ -3,6 +3,7 @@ package edu.gatech.cs2340.waterfall;
 import org.junit.Test;
 
 import edu.gatech.cs2340.waterfall.model.Model;
+import edu.gatech.cs2340.waterfall.model.User;
 
 import static org.junit.Assert.*;
 
@@ -16,10 +17,26 @@ public class ReshavSainUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
-    
+
     // Reshav Sain
+    // model instance too easy
     @Test
     public void ModelTest() throws Exception {
         assertNotNull(Model.getInstance());
+    }
+
+
+    // added User equals method
+    @Test
+    public void UserEqualsTest() throws Exception {
+        String type = "user";
+        String uid = "34344";
+        String name = "Foo Bar";
+        String email = "foo@bar.com";
+        int zip = 30332;
+        String phoneNumber = "909900900";
+        User newUser = new User(uid, name, email, zip, phoneNumber);
+        User newUser1 = new User(uid, name, email, zip, phoneNumber);
+        assertTrue(newUser.equals(newUser1));
     }
 }
