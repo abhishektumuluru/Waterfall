@@ -5,6 +5,8 @@ import android.os.Parcel;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.Date;
+
 import edu.gatech.cs2340.waterfall.controller.WelcomeActivity;
 
 public class PurityReport extends Report {
@@ -45,6 +47,21 @@ public class PurityReport extends Report {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (o == this) {
+            return true;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        PurityReport check = (PurityReport) o;
+        return ((check.getUid().equals(getUid())) && (check.getDate().equals(getDate())));
+    }
+
+    @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(this.getDate().toString());
         parcel.writeString(this.getUserName());
@@ -52,5 +69,23 @@ public class PurityReport extends Report {
         parcel.writeString(this.OverallCondition.toString());
         parcel.writeInt(this.virusPPM);
         parcel.writeInt(this.containmentPPM);
+    }
+
+    /**
+     *
+     * @return the uid
+     */
+    @Override
+    public String getUid() {
+        return super.getUid();
+    }
+
+    /**
+     *
+     * @return the date
+     */
+    @Override
+    Date getDate() {
+        return super.getDate();
     }
 }
