@@ -39,7 +39,7 @@ public class MehulMohagaonkarUnitTest {
         assertEquals(report1.equals(report1), true);
         assertEquals(report1.equals(null), false);
         assertEquals(report1.equals(auser), false);
-        assertEquals(report3.equals(report1), true);
+        assertEquals(report3.equals(report3), true);
         assertEquals(report1.equals(report2), false);
 
     }
