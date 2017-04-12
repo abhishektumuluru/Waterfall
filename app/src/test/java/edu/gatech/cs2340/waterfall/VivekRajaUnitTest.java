@@ -9,6 +9,8 @@ import edu.gatech.cs2340.waterfall.model.SourceReport;
 import edu.gatech.cs2340.waterfall.model.User;
 import edu.gatech.cs2340.waterfall.model.waterType;
 import edu.gatech.cs2340.waterfall.model.waterCondition;
+import edu.gatech.cs2340.waterfall.model.overallCondition;
+
 
 import static org.junit.Assert.*;
 
@@ -47,12 +49,12 @@ public class VivekRajaUnitTest {
 
         //check for self
         SourceReport report3 = new SourceReport(userA, nA, bottled, waste);
-        SourceReport report4 = reporr3;
+        SourceReport report4 = report3;
         assertTrue(report3.equals(report4));
 
         //type check
         SourceReport report5 = new SourceReport(userA, nA, bottled, waste);
-        PurityReport report6 = new PurityReport(auser, null, overallCondition.Treatable, 10, 10);
+        PurityReport report6 = new PurityReport(userA, null, overallCondition.Treatable, 10, 10);
         assertFalse(report5.equals(report6));
 
         //fields check
